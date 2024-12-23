@@ -1,0 +1,62 @@
+basic selector 
+combine 
+sudo class sudo element
+
+
+margin* 
+padding*
+border*
+
+background*
+
+
+
+text , font , display, list, float
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+units of length*
+
+
+fonts importing*
+
+
+san - serif
+
+flex and grid
+
+table task -> inline, flex, grid
+
+float
+----------------------------------------------------------------------------------------------------------------
+alignment
+positions
+pseudo class 
+pseudo element (:before, :after)
+n-child*
+scroll
+cell spacing
+navbar with one-level dropdown and multi-level dropdown
+----------------------------------------------------------------------------------------------------------------
+
+
+
+java script class --> 23/12/24
+
+*array methods:
+	find
+	map
+	reduce
+	filter
+	find-index
+	slice
+
+
+*String operations,
+*Date methods,
+*Math based commonly used function,
+*control structures
+
+
+10 companies,

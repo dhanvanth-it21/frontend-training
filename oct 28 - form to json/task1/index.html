@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const table = document.createElement("table");
+            const row = document.createElement("tr");
+            const form = document.createElement("form");
+            const cell = document.createElement("td");
+            form.id = "form";
+
+            // Making an array of objects for the HTML tag details
+            const inputDetails = [
+                { "label": "Name : ", "id": "name", "type": "text" },
+                { "label": "DOB : ", "id": "dob", "type": "date" },
+                { "label": "First Name : ", "id": "firstName", "type": "text" },
+                { "label": "Last Name : ", "id": "lastName", "type": "text" },
+                { "label": "Place : ", "id": "place", "type": "text" },
+                { "label": "District : ", "id": "district", "type": "text" },
+                { "label": "State : ", "id": "state", "type": "text" },
+                { "label": "Country : ", "id": "country", "type": "text" },
+                { "label": "Pincode : ", "id": "pincode", "type": "text" },
+                { "label": "Place2 : ", "id": "place2", "type": "text" },
+                { "label": "District2 : ", "id": "district2", "type": "text" },
+                { "label": "State2 : ", "id": "state2", "type": "text" },
+                { "label": "Country2 : ", "id": "country2", "type": "text" },
+                { "label": "Pincode2 : ", "id": "pincode2", "type": "text" },
+                { "label": "Phone : ", "id": "phone", "type": "text" },
+                { "label": "Email : ", "id": "email", "type": "email" },
+                { "label": "Gender : ", "id": "gender", "type": "text" }
+            ];
+
+            // Converting the details to labels and input tags and creating the form
+            inputDetails.forEach(input => {
+                // Label creation
+                const labelTag = document.createElement("label");
+                labelTag.htmlFor = input.id;
+                labelTag.textContent = input.label;
+
+                // Input creation
+                const inputTag = document.createElement("input");
+                inputTag.type = input.type;
+                inputTag.name = input.id;
+                inputTag.id = input.id;
+
+                // Adding these to the form
+                form.appendChild(labelTag);
+                form.appendChild(inputTag);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(document.createElement("br"));
+            });
+
+           
+            const langLabel = document.createElement("label");
+            langLabel.textContent = "Languages : ";
+            form.appendChild(langLabel);
+
+            const lang = [
+                { "label": "English", "id": "language1", "type": "checkbox", "value": "English" },
+                { "label": "Tamil", "id": "language2", "type": "checkbox", "value": "Tamil" },
+                { "label": "Hindi", "id": "language3", "type": "checkbox", "value": "Hindi" }
+            ];
+
+            lang.forEach(language => {
+                const inputTag = document.createElement("input");
+                inputTag.type = language.type;
+                inputTag.name = "languages[]";
+                inputTag.id = language.id;
+                inputTag.value = language.value;
+                inputDetails.textContent = language.value;
+
+                const languageLabel = document.createElement("label");
+                languageLabel.htmlFor = language.id;
+                languageLabel.textContent = language.value;
+
+                form.appendChild(inputTag);
+                form.appendChild(languageLabel);
+                form.appendChild(document.createTextNode("    "));
+            });
+            form.appendChild(document.createElement("br"));
+            form.appendChild(document.createElement("br"));
+
+            // Submit button
+            const submitButton = document.createElement("button");
+            submitButton.type = "submit";
+            submitButton.textContent = "Submit";
+            form.appendChild(submitButton);
+
+            cell.appendChild(form);
+            row.appendChild(cell);
+
+            const outputCell = document.createElement("td");
+            const outputLabel = document.createElement("label");
+            outputLabel.textContent = "Output : ";
+            outputCell.appendChild(outputLabel);
+
+            const outputPre = document.createElement("pre");
+            outputPre.id = "output";
+            outputCell.appendChild(outputPre);
+
+            row.appendChild(outputCell);
+            table.appendChild(row);
+            document.body.appendChild(table);
+
+  
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const input = {
+                    "name": document.getElementById("name").value,
+                    "dob": document.getElementById("dob").value,
+                    "user": {
+                        "firstName": document.getElementById("firstName").value,
+                        "lastName": document.getElementById("lastName").value
+                    },
+                    "address": [
+                        {
+                            "place": document.getElementById("place").value,
+                            "district": document.getElementById("district").value,
+                            "state": document.getElementById("state").value,
+                            "country": document.getElementById("country").value,
+                            "pincode": document.getElementById("pincode").value
+                        },
+                        {
+                            "place": document.getElementById("place2").value,
+                            "district": document.getElementById("district2").value,
+                            "state": document.getElementById("state2").value,
+                            "country": document.getElementById("country2").value,
+                            "pincode": document.getElementById("pincode2").value
+                        }
+                    ],
+                    "phone": document.getElementById("phone").value,
+                    "email": document.getElementById("email").value,
+                    "gender": document.getElementById("gender").value,
+                    "languages": Array.from(document.querySelectorAll("input[name='languages[]']:checked")).map(input => input.value)
+                };
+
+               
+                document.getElementById("output").textContent = JSON.stringify(input, null, 2);
+            });
+        });
+    </script>
+</body>
+</html>

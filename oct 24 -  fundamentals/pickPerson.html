@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "person">None</h1>
+    <button onclick="pickPerson()">Pick</button>
+    <script>
+        const list = ["Dhanvanth","Harish","Dhayal","Suganth","Shobiga","Sri Malar","Varsitha"];
+        var length = list.length;
+        function pickPerson(){
+            var randomNumber = Math.floor(Math.random() * length);
+            var person = list[randomNumber];
+            document.getElementById("person").textContent = person;
+        }
+    </script>
+</body>
+</html>
