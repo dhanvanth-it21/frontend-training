@@ -44,19 +44,19 @@ navbar with one-level dropdown and multi-level dropdown
 
 java script class --> 23/12/24
 
-*array methods:
-	find
-	map
-	reduce
-	filter
-	find-index
-	slice
+1.array methods:
+	find**
+	map**
+	reducer**
+	filter**
+	findIndex**
+	slice**
 
 
-*String operations,
-*Date methods,
-*Math based commonly used function,
-*control structures
+2.String operations,**
+3.Date methods,**
+4.Math based commonly used function,**
+5.control structures
 
 
-10 companies,
+6.10 companies with different zone, finding they are on work according to their time zone
