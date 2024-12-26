@@ -171,3 +171,38 @@ console.log(includesStr(str, subStr));
 console.log(str.includes(subStr));
 
 //--------------------------------------------------------------------
+// String padStart()
+
+const padStr = "87556";
+const totalLength = 10;
+const char = "x";
+
+function padStartStr(str, totalLength, char) {
+
+   while (str.length < totalLength) {
+      str = char + str;
+   }
+   return str;
+
+}
+console.log(padStartStr(padStr, totalLength, char));
+
+console.log(padStr.padStart(totalLength, char));
+//----------------------------------------------------------------------
+// String padEnd()
+
+function padEndStr(str, totalLength, char) {
+
+   while (str.length < totalLength) {
+      str = str + char;
+   }
+   return str;
+}
+
+console.log(padEndStr(padStr, totalLength, char));
+
+console.log(padStr.padEnd(totalLength, char));
+
+//-------------------------------------------------------------------
+
+
