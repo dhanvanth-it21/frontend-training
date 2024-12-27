@@ -60,3 +60,34 @@ java script class --> 23/12/24
 
 
 6.10 companies with different zone, finding they are on work according to their time zone
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+details in depth required
+
+this --> its working in different places
+
+arrow function
+
+call-back function
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+java script class --> 27/12/24
+
+***********every thing in-depth concept needed***********
+
+1.garbage collector
+
+2.stack memory 
+
+3.heap memory
+
+4.Event Loop
+
+5.CallBack Queue
+
+6.Call Stack
+
+7.How WEB API communicate with the call stack

@@ -5,18 +5,19 @@
 const num1 = 4;
 const num2 = 9;
 
-let ans = num1 - num2;
-if (ans < 0) {
-  ans = ans * -1;
-}
+// let ans = num1 - num2;
+// if (ans < 0) {
+//   ans = ans * -1;
+// }
 
-// const ans = Math.abs(num1-num2);
+const ans = Math.abs(num1 - num2);
 
 console.log("Absolute i : " + num1 + " - " + num2 + " = " + ans);
 
 //-------------------------------------------------------
 
 const num3 = Math.random() * 1000;
+// console.log(Math.trunc(Math.random() * 10000));
 console.log(num3);
 console.log(Math.floor(num3) + " => floor i");
 console.log(Math.ceil(num3) + " => ceil i");
@@ -27,7 +28,7 @@ console.log(Math.PI);
 //Math.min
 
 const arr = [4, 2, 4, 6, 3, 1, 8];
-let min = arr.length === 0 ? Number.MAX_i : arr[0];
+let min = arr.length === 0 ? Number.MAX_VALUE : arr[0];
 for (let i = 0; i < arr.length; i++) {
   if (arr[i] < min) {
     min = arr[i];
@@ -38,7 +39,7 @@ console.log(`min i the array = ${min}`);
 console.log("min from the array using Math.min() : " + Math.min(...arr));
 //-------------------------------------------------------------------
 //Math.max()
-let max = arr.length === 0 ? Number.MIN_i : arr[0];
+let max = arr.length === 0 ? Number.MIN_VALUE : arr[0];
 for (let i = 0; i < arr.length; i++) {
   if (arr[i] > max) {
     max = arr[i];
@@ -111,7 +112,7 @@ console.log(Math.sign(num5));
 //start with
 
 const str = "Hello world!!";
-const startStr = "Hello";
+const startStr = "hello";
 
 function startsWithStr(str, startStr) {
   if (startStr.length > str.length) return false;
@@ -170,7 +171,7 @@ console.log(str.includes(subStr));
 
 const padStr = "87556";
 const totalLength = 10;
-const char = "x";
+const char = "*";
 
 function padStartStr(str, totalLength, char) {
   while (str.length < totalLength) {
