@@ -78,16 +78,26 @@ java script class --> 27/12/24
 
 ***********every thing in-depth concept needed***********
 
-1.garbage collector
+1.garbage collector**
 
-2.stack memory 
+2.stack memory**
 
-3.heap memory
+3.heap memory**
 
-4.Event Loop
+4.Event Loop**
 
-5.CallBack Queue
+5.CallBack Queue**
 
-6.Call Stack
+6.Call Stack**
 
 7.How WEB API communicate with the call stack
+
+8.web worker
+
+9.immediate note function
+
+10.template literal
+
+11.extract age suing dob data
+
+12.event listeners
