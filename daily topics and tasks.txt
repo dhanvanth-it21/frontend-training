@@ -101,3 +101,16 @@ java script class --> 27/12/24
 11.extract age suing dob data
 
 12.event listeners
+
+--------------------------------------------------------------------------------------------------------------------------
+
+alter
+
+conform
+
+prompt
+
+how web api listen to the event listner when js engine is busy
+
+selector -> querySelector and querySelectorAll
+	|--> using atribute
