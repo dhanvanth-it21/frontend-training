@@ -74,7 +74,7 @@ call-back function
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-java script class --> 27/12/24
+java script class --> 27/12/24 && 28/12/24
 
 ***********every thing in-depth concept needed***********
 
@@ -90,27 +90,24 @@ java script class --> 27/12/24
 
 6.Call Stack**
 
-7.How WEB API communicate with the call stack
+7.How WEB API communicate with the call stack**
 
-8.web worker
+8.web worker**
 
-9.immediate note function
+9.immediately invked function**
 
-10.template literal
+10.template literal**
 
 11.extract age suing dob data
 
-12.event listeners
+12.event listeners**
 
 --------------------------------------------------------------------------------------------------------------------------
 
-alter
+java script class --> 27/12/24 && 30/12/24
 
-conform
+1.How web api listens to the event listener when javascript engine is busy
 
-prompt
+2.Selector -> querySelector and querySelector all
 
-how web api listen to the event listner when js engine is busy
-
-selector -> querySelector and querySelectorAll
-	|--> using atribute
+3.Alter confirm prompt
