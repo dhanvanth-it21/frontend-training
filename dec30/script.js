@@ -131,3 +131,235 @@ p2.addEventListener(
     },
     true
 );
+
+//------------------------------------------------------------------------
+
+
+window.addEventListener('load', (event) => {
+  console.log("Page fully loaded");
+})
+
+
+// ------------------------------------------------------------------------------
+
+const clickButton = document.querySelector(".click button");
+const clickCount = document.querySelector(".click p");
+
+clickButton.addEventListener('click', clickButtonIncrement);
+
+function clickButtonIncrement(){
+  clickCount.innerHTML = `Click: ${parseInt(clickCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const contextmenuButton = document.querySelector(".contextmenu button");
+const contextmenuCount = document.querySelector(".contextmenu p");
+
+contextmenuButton.addEventListener('contextmenu', contextmenuButtonIncrement);
+
+function contextmenuButtonIncrement(){
+  contextmenuCount.innerHTML = `Contextmenu: ${parseInt(contextmenuCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const dblclickButton = document.querySelector(".dblclick button");
+const dblclickCount = document.querySelector(".dblclick p");
+
+dblclickButton.addEventListener('dblclick', dblclickButtonIncrement);
+
+function dblclickButtonIncrement(){
+  dblclickCount.innerHTML = `Double Click: ${parseInt(dblclickCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const mouseDownUpButton = document.querySelector(".mousedown-mouseup button");
+const mouseDownCount = document.querySelector(".mousedown-mouseup .mousedown");
+const mouseUpCount = document.querySelector(".mousedown-mouseup .mouseup");
+
+mouseDownUpButton.addEventListener('mousedown', mouseDownButtonIncrement);
+mouseDownUpButton.addEventListener('mouseup', mouseUpButtonIncrement);
+
+function mouseDownButtonIncrement(){
+  mouseDownCount.innerHTML = `Mouse Down: ${parseInt(mouseDownCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function mouseUpButtonIncrement(){
+  mouseUpCount.innerHTML = `Mouse Up: ${parseInt(mouseUpCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const mouseEnterLeaveButton = document.querySelector(".mouseenter-mouseleave button");
+const mouseEnterCount = document.querySelector(".mouseenter-mouseleave .mouseenter");
+const mouseLeaveCount = document.querySelector(".mouseenter-mouseleave .mouseleave");
+
+mouseEnterLeaveButton.addEventListener('mouseenter', mouseEnterButtonIncrement);
+mouseEnterLeaveButton.addEventListener('mouseleave', mouseLeaveButtonIncrement);
+
+function mouseEnterButtonIncrement(){
+  mouseEnterCount.innerHTML = `Mouse Enter: ${parseInt(mouseEnterCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function mouseLeaveButtonIncrement(){
+  mouseLeaveCount.innerHTML = `Mouse Leave: ${parseInt(mouseLeaveCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const mouseOverOutButton = document.querySelector(".mouseover-mouseout button");
+const mouseOverCount = document.querySelector(".mouseover-mouseout .mouseover");
+const mouseOutCount = document.querySelector(".mouseover-mouseout .mouseout");
+
+mouseOverOutButton.addEventListener('mouseover', mouseOverButtonIncrement);
+mouseOverOutButton.addEventListener('mouseout', mouseOutButtonIncrement);
+
+function mouseOverButtonIncrement(){
+  mouseOverCount.innerHTML = `Mouse Over: ${parseInt(mouseOverCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function mouseOutButtonIncrement(){
+  mouseOutCount.innerHTML = `Mouse Out: ${parseInt(mouseOutCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const mousemoveButton = document.querySelector(".mousemove button");
+const mousemoveCount = document.querySelector(".mousemove p");
+
+mousemoveButton.addEventListener('mousemove', mousemoveButtonIncrement);
+
+function mousemoveButtonIncrement(){
+  mousemoveCount.innerHTML = `Mouse Move: ${parseInt(mousemoveCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+// const wheelButton = document.querySelector(".wheel button");
+// const wheelCount = document.querySelector(".wheel p");
+
+// wheelButton.addEventListener('wheel', wheelButtonIncrement);
+
+// function wheelButtonIncrement(){
+//   wheelCount.innerHTML = `Wheel: ${parseInt(wheelCount.textContent.split(": ")[1]) + 1}`;
+// }
+
+
+// ----------------------------------------------------------------------------------------
+// const wheelButton = document.querySelector(".wheel button");
+const wheelCount = document.querySelector(".wheel p");
+
+window.addEventListener('wheel', wheelButtonIncrement);
+
+function wheelButtonIncrement(){
+  wheelCount.innerHTML = `Wheel: ${parseInt(wheelCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const keyDownUpButton = document.querySelector(".keydown-keyup input");
+const keyDownCount = document.querySelector(".keydown-keyup .keydown");
+const keyUpCount = document.querySelector(".keydown-keyup .keyup");
+
+keyDownUpButton.addEventListener('keydown', keyDownButtonIncrement);
+keyDownUpButton.addEventListener('keyup', keyUpButtonIncrement);
+
+function keyDownButtonIncrement(){
+  keyDownCount.innerHTML = `Key Down: ${parseInt(keyDownCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function keyUpButtonIncrement(){
+  keyUpCount.innerHTML = `Key Up: ${parseInt(keyUpCount.textContent.split(": ")[1]) + 1}`;
+}
+
+// ----------------------------------------------------------------------------------------
+const copyCutPasteButton = document.querySelector(".copy-cut-paste input");
+const copyCount = document.querySelector(".copy-cut-paste .copy");
+const cutCount = document.querySelector(".copy-cut-paste .cut");
+const pasteCount = document.querySelector(".copy-cut-paste .paste");
+
+copyCutPasteButton.addEventListener('copy', copyButtonIncrement);
+copyCutPasteButton.addEventListener('cut', cutButtonIncrement);
+copyCutPasteButton.addEventListener('paste', pasteButtonIncrement);
+
+function copyButtonIncrement(){
+  copyCount.innerHTML = `Copy: ${parseInt(copyCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function cutButtonIncrement(){
+  cutCount.innerHTML = `Cut: ${parseInt(cutCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function pasteButtonIncrement(){
+  pasteCount.innerHTML = `Paste: ${parseInt(pasteCount.textContent.split(": ")[1]) + 1}`;
+}
+
+//----------------------------------------------------------------------
+
+
+
+const form = document.querySelector(".form");
+const blurCount = document.querySelector(".blur");
+const focusCount = document.querySelector(".focus");
+const changeCount = document.querySelector(".change");
+const inputCount = document.querySelector(".input");
+const submitCount = document.querySelector(".submit");
+const resetCount = document.querySelector(".reset");
+const searchCount = document.querySelector(".search");
+
+
+
+
+
+// const blurInputCount = document.querySelector(".form #text");
+// blurInputCount.addEventListener('blur', incrementBlurCount);
+
+form.addEventListener('blur', incrementBlurCount, true); //event delegation
+form.addEventListener('focus', incrementFocusCount, true);
+form.addEventListener('change', incrementChangeCount);
+form.addEventListener('input', incrementInputCount);
+form.addEventListener('submit', incrementSubmitCount);
+form.addEventListener('reset', incrementResetCount);
+form.addEventListener('search', incrementSearchCount);
+
+
+function incrementBlurCount() {
+  blurCount.innerHTML = `Blur: ${parseInt(blurCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementFocusCount() {
+  focusCount.innerHTML = `Focus: ${parseInt(focusCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementChangeCount() {
+  changeCount.innerHTML = `Change: ${parseInt(changeCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementInputCount() {
+  inputCount.innerHTML = `Input: ${parseInt(inputCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementSubmitCount(event) {
+  event.preventDefault();
+  submitCount.innerHTML = `Submit: ${parseInt(submitCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementResetCount() {
+  resetCount.innerHTML = `Reset: ${parseInt(resetCount.textContent.split(": ")[1]) + 1}`;
+}
+
+function incrementSearchCount() {
+  searchCount.innerHTML = `Search: ${parseInt(searchCount.textContent.split(": ")[1]) + 1}`;
+}
+
+
+//-----------------------------------------------------------------------------------------------
+
+const selectInput = document.querySelector(".select input");
+const selectp = document.querySelector(".select p");
+
+selectInput.addEventListener('select', selectInputp);
+
+function selectInputp(event){
+  selectp.innerHTML = event.target.value.substring(
+    event.target.selectionStart,
+    event.target.selectionEnd,
+  );
+}
+
+
+

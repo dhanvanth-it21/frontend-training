@@ -111,3 +111,9 @@ java script class --> 30/12/24
 2.Selector -> querySelector and querySelector all
 
 3.Alter confirm prompt
+
+--------------------------------------------------------------------------------------------------------------------------
+
+java script class --> 31/12/24
+
+1.event listener task

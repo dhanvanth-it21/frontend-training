@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+
+
+
     <h1>Hello</h1>
     <button id="btn1">Button-1</button>
     <button id="btn2">Button-2</button>
@@ -24,6 +28,105 @@
             <p id="p2">Capture</p>
         </div>
     </button>
+
+
+    <br>
+
+    <!-- --------------------------------------Mouse Events---------------------------------------------- -->
+    <div class="click">
+        <button>Click button</button>
+        <p>Click: 0</p>
+    </div>
+
+    <div class="contextmenu">
+        <button>Context-Menu Menu</button>
+        <p>Contextmenu: 0</p>
+    </div>
+
+    <div class="dblclick">
+        <button>Double Click button</button>
+        <p>Double Click: 0</p>
+    </div>
+
+    <div class="mousedown-mouseup">
+        <button>Mouse-Down and Mouse-Up button</button>
+        <p class="mousedown">Mouse Down: 0</p>
+        <p class="mouseup">Mouse Up: 0</p>
+    </div>
+
+    <div class="mouseenter-mouseleave">
+        <button>Mouse Enter and Mouse Leave button</button>
+        <p class="mouseenter">Mouse Enter: 0</p>
+        <p class="mouseleave">Mouse Leave: 0</p>
+    </div>
+
+    <div class="mouseover-mouseout">
+        <button>Mouse Over and Mouse Out button</button>
+        <p class="mouseover">Mouse Over: 0</p>
+        <p class="mouseout">Mouse Out: 0</p>
+    </div>
+
+    <div class="mousemove">
+        <button>Mouse Move button</button>
+        <p>Mouse Move: 0</p>
+    </div>
+
+    <div class="wheel">
+        <button>wheel button</button>
+        <p>Wheel: 0</p>
+    </div>
+
+    <div class="keydown-keyup">
+        <input type="text" placeholder="Key-Down and Key-Up input">
+        <p class="keydown">Key Down: 0</p>
+        <p class="keyup">Key Up: 0</p>
+    </div>
+
+    <div class="copy-cut-paste">
+        <input type="text" placeholder="copy-cut-paste" value="Hello world!!!">
+        <p class="copy">Copy: 0</p>
+        <p class="cut">Cut: 0</p>
+        <p class="paste">Paste: 0</p>
+    </div>
+
+
+
+    <div class="form-events">
+
+        <form class="form">
+
+            <label for="text">Text Input:</label>
+            <input type="text" id="text" name="text" placeholder="Enter text">
+            <br>
+
+            <label for="search">Search Input:</label>
+            <input type="search" id="search" name="search" placeholder="Search">
+            <br>
+
+            <button type="submit">Submit</button>
+            
+            <button type="reset">Reset</button>
+        </form>
+
+
+        <p class="blur">Blur: 0</p>
+        <p class="focus">Focus: 0</p>
+        <p class="change">Change: 0</p>
+        <p class="input">Input: 0</p>
+        <p class="submit">Submit: 0</p>
+        <p class="reset">Reset: 0</p>
+        <p class="search">Search: 0</p>
+    </div>
+
+
+    <div class="select">
+        <input value="Hello world!!!!">
+        <p></p>
+    </div>
+
+    
+
+    
     
 </body>
 <script src = "script.js"></script>
