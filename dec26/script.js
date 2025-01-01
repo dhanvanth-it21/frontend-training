@@ -141,7 +141,7 @@ let countryList = [
   {
     name: "Marshall Islands",
     gmt: "+12:00",
-  }
+  },
 ];
 
 const indiaGMTMilli = 330 * 60 * 1000;
@@ -194,23 +194,76 @@ function calWorkHour(d) {
   return false;
 }
 
+
+// returning the date object 
 function currentTime(obj) {
   const milli = gmtTomillisecond(obj.gmt);
   const country = obj.name;
   const d = new Date(gmt0() + milli);
+  return d;
+}
+
+
+// just  printing the time
+function printTime(obj) {
+  const d = currentTime(obj);
   console.log(
-    country +
-      " ====> " +
-      d.toDateString() +
-      " " +
-      d.getHours() +
-      ":" +
-      d.getMinutes() +
-      ":" +
-      d.getSeconds() +
-      `  GMT : ${obj.gmt}` +
-      ` ====> work-Hour : ${calWorkHour(d)}`
+    `${
+      obj.name
+    } ====> ${d.toDateString()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} GMT: ${
+      obj.gmt
+    } ====> work-Hour: ${calWorkHour(d)}`
   );
 }
 
-countryList.forEach((obj) => currentTime(obj));
+
+// to find the country's  object using its name
+function findCountry(name) {
+  return countryList.find((country) => {
+    if (country.name === name) {
+      return country;
+    }
+  });
+}
+
+//pritiing all the countries date in the console
+countryList.forEach((obj) => printTime(obj));
+
+//selecting the select country tag
+const selectCountry = document.getElementById("country");
+selectCountry.id = "countrySelect";
+
+
+// data to the select tag for options
+countryList.forEach((country) => {
+  const option = document.createElement("option");
+  option.value = country.name;
+  option.textContent = country.name;
+  selectCountry.appendChild(option);
+});
+
+
+//event listeners
+selectCountry.addEventListener("change", details);
+window.addEventListener("load", details);
+
+
+//filling the details of the seleted country
+function details() {
+
+  const d = currentTime(findCountry(selectCountry.value));
+
+  document.querySelector(".fullDate").innerHTML = `Full Date: ${d}`;
+  document.querySelector(".year").innerHTML = `Year: ${d.getFullYear()}`;
+  document.querySelector(".month").innerHTML = `Month: ${d.getMonth() + 1}`;
+  document.querySelector(".date").innerHTML = `Date: ${d.getDate()}`;
+  document.querySelector(".day").innerHTML = `Day: ${d.getDay()}`;
+  document.querySelector(".hours").innerHTML = `Hours: ${d.getHours()}`;
+  document.querySelector(".minutes").innerHTML = `Minutes: ${d.getMinutes()}`;
+  document.querySelector(".seconds").innerHTML = `Seconds: ${d.getSeconds()}`;
+  document.querySelector(".isWorking").innerHTML = `Is Working: ${calWorkHour(d)}`;
+}
+
+
+
+
