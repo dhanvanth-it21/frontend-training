@@ -1,119 +1,103 @@
-basic selector 
-combine 
-sudo class sudo element
+Basic Selectors
+Combined Selectors
+Pseudo Classes and Pseudo Elements
 
+Margin
+Padding
+Border
 
-margin* 
-padding*
-border*
+Background
 
-background*
-
-
-
-text , font , display, list, float
-
-
+Text, Font, Display, List, Float
 
 ----------------------------------------------------------------------------------------------------------------------------------
-units of length*
+Units of Length
 
+Font Importing
 
-fonts importing*
+Sans-serif
 
+Flex and Grid
 
-san - serif
+Table Task: Inline, Flex, Grid
 
-flex and grid
-
-table task -> inline, flex, grid
-
-float
+Float
 ----------------------------------------------------------------------------------------------------------------
-alignment
-positions
-pseudo class 
-pseudo element (:before, :after)
-n-child*
-scroll
-cell spacing
-navbar with one-level dropdown and multi-level dropdown
+Alignment
+Positions
+Pseudo Class
+Pseudo Element (:before, :after)
+nth-child
+Scroll
+Cell Spacing
+Navbar with One-Level Dropdown and Multi-Level Dropdown
 ----------------------------------------------------------------------------------------------------------------
 
+JavaScript Class --> 23/12/24
 
+1. Array Methods:
+	- find
+	- map
+	- reduce
+	- filter
+	- findIndex
+	- slice
 
-java script class --> 23/12/24
+2. String Operations
+3. Date Methods
+4. Commonly Used Math Functions
+5. Control Structures
 
-1.array methods:
-	find**
-	map**
-	reducer**
-	filter**
-	findIndex**
-	slice**
-
-
-2.String operations,**
-3.Date methods,**
-4.Math based commonly used function,**
-5.control structures
-
-
-6.10 companies with different zone, finding they are on work according to their time zone
+6. 10 Companies in Different Time Zones: Determine if they are working according to their time zone
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-details in depth required
+Details in Depth Required:
 
-this --> its working in different places
-
-arrow function
-
-call-back function
-
+- `this` keyword: Its working in different contexts
+- Arrow Functions
+- Callback Functions
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-java script class --> 27/12/24 && 28/12/24
+JavaScript Class --> 27/12/24 & 28/12/24
 
-***********every thing in-depth concept needed***********
+*********** In-Depth Concepts Needed ***********
 
-1.garbage collector**
-
-2.stack memory**
-
-3.heap memory**
-
-4.Event Loop**
-
-5.CallBack Queue**
-
-6.Call Stack**
-
-7.How WEB API communicate with the call stack**
-
-8.web worker**
-
-9.immediately invked function**
-
-10.template literal**
-
-11.extract age suing dob data
-
-12.event listeners**
+1. Garbage Collection
+2. Stack Memory
+3. Heap Memory
+4. Event Loop
+5. Callback Queue
+6. Call Stack
+7. How Web API Communicates with the Call Stack
+8. Web Workers
+9. Immediately Invoked Function Expressions (IIFE)
+10. Template Literals
+11. Extract Age Using Date of Birth Data
+12. Event Listeners
 
 --------------------------------------------------------------------------------------------------------------------------
 
-java script class --> 30/12/24
+JavaScript Class --> 30/12/24
 
-1.How web api listens to the event listener when javascript engine is busy
-
-2.Selector -> querySelector and querySelector all
-
-3.Alter confirm prompt
+1. How Web API Listens to Event Listeners When JavaScript Engine is Busy
+2. Selectors: `querySelector` and `querySelectorAll`
+3. Alert, Confirm, and Prompt
 
 --------------------------------------------------------------------------------------------------------------------------
 
-java script class --> 31/12/24
+JavaScript Class --> 31/12/24
 
-1.event listener task
+1. Event Listener Task
+
+-------------------------------------------------------------------------------------------------------------
+
+JavaScript Class --> 2/1/25
+
+1. Textbox Validation: Only alphabets and spaces allowed, no space at start and end, max 20 characters
+2. First Letter Capitalized, Only Alphabets Allowed
+3. Only Numbers and Decimal Places (at most 2)
+4. Only Numbers and Alphabets
+5. Only Positive Numbers
+	

@@ -69,6 +69,25 @@ const monthName = [
   "December",
 ];
 
+const workTiming = [
+  {
+    st: 10,
+    et: 18,
+  },
+  {
+    st: 9,
+    et: 17,
+  },
+  {
+    st: 8,
+    et: 16,
+  },
+  {
+    st: 6,
+    et: 12,
+  },
+];
+
 const indiaGMTMilli = 330 * 60 * 1000;
 
 function gmt0() {
@@ -79,8 +98,6 @@ function gmtTomillisecond(str) {
   let milli = 0;
   const time = str.substring(1);
   const arrTime = time.split(":");
-  //   console.log(parseInt(arrTime[0]));
-  //   console.log(parseInt(arrTime[1]));
 
   milli += parseInt(arrTime[0]) * 60 * 60 * 1000;
   milli += parseInt(arrTime[1]) * 60 * 1000;
@@ -91,31 +108,28 @@ function gmtTomillisecond(str) {
   return milli;
 }
 
+const defaultWorkingStet = {
+  st : 10,
+  et : 18
+}
+
 const workTime = {
-  startTime: 10,
-  endTime: 18,
+  startTime: defaultWorkingStet.st,
+  endTime: defaultWorkingStet.et,
 };
 
+// console.log(new Date(workTime.startTime));
+
 function calWorkHour(d) {
-  if (d.getDay === 0 || d.getDay === 6) {
+  if (d.getDay() === 0 || d.getDay() === 6) {
     return false;
   }
-  let startTime = new Date(
-    d.getFullYear(),
-    d.getMonth(),
-    d.getDate(),
-    10,
-    0,
-    0
-  ).getTime();
-  let endTime = new Date(
-    d.getFullYear(),
-    d.getMonth(),
-    d.getDate(),
-    18,
-    0,
-    0
-  ).getTime();
+  const startTime = workTime.startTime.getTime();
+  const endTime = workTime.endTime.getTime();
+
+  if (startTime >= endTime) {
+    return "Invalid timing";
+  }
   if (d.getTime() >= startTime && d.getTime() <= endTime) {
     return true;
   }
@@ -162,11 +176,10 @@ function getMonthName(monthNameIndex) {
 }
 
 //pritiing all the countries date in the console
-countryList.forEach((obj) => printTime(obj));
+// countryList.forEach((obj) => printTime(obj));
 
 //selecting the select country tag
 const selectCountry = document.getElementById("country");
-selectCountry.id = "countrySelect";
 
 // data to the select tag for options
 countryList.forEach((country) => {
@@ -176,26 +189,84 @@ countryList.forEach((country) => {
   selectCountry.appendChild(option);
 });
 
+const defaultTime = document.querySelector(".default-time");
+// data to the select tag for options
+workTiming.forEach((time) => {
+  const btn = document.createElement("button");
+  btn.value = `${time.st}:${time.et}`;
+  btn.textContent = `${time.st}:${time.et}`;
+  defaultTime.appendChild(btn);
+});
+
+const workTimeStet = document.querySelectorAll(".default-time button");
+
+workTimeStet.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    const str = event.target.value.split(":");
+    defaultWorkingStet.st = str[0];
+    defaultWorkingStet.et = str[1];
+    workTimeDetails();
+    details();
+    setColor(event.target);
+  });
+});
+
+function setColor(activeBtn) {
+  workTimeStet.forEach((btn) => {
+    btn.style.backgroundColor = btn === activeBtn ? "#ff9f91" : "";
+  });
+}
+
+
+
 //event listeners
 selectCountry.addEventListener("change", details);
+window.addEventListener("load", workTimeDetails);
+document.querySelector(".work-hour").addEventListener("change", details);
 window.addEventListener("load", details);
+
+function workTimeDetails() {
+  const d = currentTime(findCountry(selectCountry.value));
+  document.querySelector("#start-time").value = `${d.getFullYear()}-${paddedTwo(
+    d.getMonth() + 1
+  )}-${paddedTwo(d.getDate())}T${paddedTwo(defaultWorkingStet.st)}:${paddedTwo(0)}`;
+  document.querySelector("#end-time").value = `${d.getFullYear()}-${paddedTwo(
+    d.getMonth() + 1
+  )}-${paddedTwo(d.getDate())}T${paddedTwo(defaultWorkingStet.et)}:${paddedTwo(0)}`;
+}
 
 //filling the details of the seleted country
 function details() {
   const d = currentTime(findCountry(selectCountry.value));
 
-  document.querySelector(".fullDate").innerHTML = `Full Date: ${d}`;
+  workTime.startTime = new Date(document.querySelector("#start-time").value);
+  workTime.endTime = new Date(document.querySelector("#end-time").value);
+  // console.log(workTime.startTime.getTime())
+
+  document.querySelector(".fullDate").innerHTML = `Full Date: ${d
+    .toString()
+    .substring(0, 25)} GMT ${findCountry(selectCountry.value).gmt}`;
   document.querySelector(".year").innerHTML = `Year: ${d.getFullYear()}`;
-  document.querySelector(".month").innerHTML = `Month: ${getMonthName(d.getMonth())}`;
-  document.querySelector(".date").innerHTML = `Date: ${d.getDate()}`;
+  document.querySelector(".month").innerHTML = `Month: ${getMonthName(
+    d.getMonth()
+  )}`;
+  document.querySelector(".date").innerHTML = `Date: ${paddedTwo(d.getDate())}`;
   document.querySelector(".day").innerHTML = `Day: ${getDayName(d.getDay())}`;
-  document.querySelector(".time").innerHTML = `Time: ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-  document.querySelector(".hours").innerHTML = `Hours: ${d.getHours()}`;
-  document.querySelector(".minutes").innerHTML = `Minutes: ${d.getMinutes()}`;
-  document.querySelector(".seconds").innerHTML = `Seconds: ${d.getSeconds()}`;
-  document.querySelector(".isWorking").innerHTML = `Is-Working: ${calWorkHour(d)}`;
-  console.log(d.toISOString());
-  document.querySelector("#start-time").value = d.toISOString().slice(0, 16);
+  document.querySelector(
+    ".time"
+  ).innerHTML = `Time: ${paddedTwo(d.getHours())}:${paddedTwo(d.getMinutes())}:${paddedTwo(d.getSeconds())}`;
+  document.querySelector(".hours").innerHTML = `Hours: ${paddedTwo(d.getHours())}`;
+  document.querySelector(".minutes").innerHTML = `Minutes: ${paddedTwo(d.getMinutes())}`;
+  document.querySelector(".seconds").innerHTML = `Seconds: ${paddedTwo(d.getSeconds())}`;
+  document.querySelector(".isWorking").innerHTML = `Is-Working: ${calWorkHour(
+    d
+  )}`;
+
+  // console.log(d.toISOString());
+}
+
+function paddedTwo(str) {
+  return `${str}`.padStart(2, "0");
 }
 
 //-----------------------------------------------------------------------------------
