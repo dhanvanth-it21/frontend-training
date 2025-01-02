@@ -24,7 +24,6 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -38,6 +37,7 @@ select {
     padding: 10px;
     border: 1px solid #000;
     border-radius: 5px;
+    font-size: large;
 }
 
 p {
@@ -45,15 +45,12 @@ p {
     padding: 10px;
     background-color: #f0ecec;
     border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
 }
 
 .isWorking {
     font-size: 2em;
     text-align: center;
     text-transform: uppercase;
-}
-
-.fullDate, .year, .month, .date, .day, .hours, .minutes, .seconds {
-    font-size: 1em;
-    text-align: center;
 }
