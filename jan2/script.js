@@ -37,13 +37,20 @@ function task1fun(e) {
   }
   const val = e.target.value;
   const len = val.length;
-  if(len === 0 || (len >= 2 && val.charAt(len-1) === ' ')){
-    e.preventDefault();
-    e.target.value = val + e.key.toUpperCase();
-  }
   if (len >= task1MaxLimit) {
     e.preventDefault();
   }
+  else if((len >= 2 && val.charAt(len-1) === ' ' && e.key === ' ')){
+    e.preventDefault();
+    e.target.value = val.trim();
+    
+  }
+  else if(len === 0 || (len >= 2 && val.charAt(len-1) === ' ')){
+    e.preventDefault();
+    e.target.value = val + e.key.toUpperCase();
+  }
+
+  
 
 }
 
