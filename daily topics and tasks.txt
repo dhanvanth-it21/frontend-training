@@ -101,3 +101,8 @@ JavaScript Class --> 2/1/25
 4. Only Numbers and Alphabets
 5. Only Positive Numbers
 	
+--------------------------------------------------------------------------------------------------------------
+
+plugin creation
+
+array of objects.
