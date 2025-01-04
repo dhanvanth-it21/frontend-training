@@ -102,7 +102,13 @@ JavaScript Class --> 2/1/25
 5. Only Positive Numbers
 	
 --------------------------------------------------------------------------------------------------------------
+JavaScript Class ---> 3/1325
 
-plugin creation
+plugin creation using js
 
-array of objects.
+json format -> array of objects as input
+convert them into a html webpage using only js
+
+--------------------------------------------------------------------------------------------------------------
+fetch API
+rest API
