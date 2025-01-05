@@ -36,9 +36,20 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "first-name" },
-                        text: "First Name:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "first-name" },
+                            text: "First Name:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "first-name-status"
+                          },
+                        ],
                       },
                       {
                         tag: "input",
@@ -55,9 +66,20 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "last-name" },
-                        text: "Last Name:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "last-name" },
+                            text: "Last Name:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "last-name-status"
+                          },
+                        ],
                       },
                       {
                         tag: "input",
@@ -74,13 +96,24 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "age" },
-                        text: "Age:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "age" },
+                            text: "Age:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "age-status"
+                          },
+                        ],
                       },
                       {
                         tag: "input",
-                        attributes: { type: "number", id: "age", name: "age", placeholder: "21" },
+                        attributes: { type: "text", id: "age", name: "age", placeholder: "21" },
                       },
                     ],
                   },
@@ -88,14 +121,30 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "gender" },
-                        text: "Gender:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "gender" },
+                            text: "Gender:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "gender-status"
+                          },
+                        ],
                       },
                       {
                         tag: "select",
                         attributes: { id: "gender", name: "gender" },
                         children: [
+                          {
+                            tag: "option",
+                            attributes: { value: "select" },
+                            text: "Select",
+                          },
                           {
                             tag: "option",
                             attributes: { value: "male" },
@@ -119,9 +168,20 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "email" },
-                        text: "Email:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "email" },
+                            text: "Email:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "email-status"
+                          },
+                        ],
                       },
                       {
                         tag: "input",
@@ -138,9 +198,20 @@ export const elements = [
                     tag: "div",
                     children: [
                       {
-                        tag: "label",
-                        attributes: { for: "phone" },
-                        text: "Phone Number:",
+                        tag: "div",
+                        class: "user-form-inputs-label",
+                        children: [
+                          {
+                            tag: "label",
+                            attributes: { for: "phone" },
+                            text: "Phone Number:",
+                          },
+                          {
+                            tag: "p",
+                            text: "*",
+                            id: "phone-status"
+                          },
+                        ],
                       },
                       {
                         tag: "input",
