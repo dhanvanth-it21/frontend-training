@@ -159,7 +159,12 @@ function task6fun(e) {
   const index = task6.selectionStart;
   const key = asciiValue(e.key);
   if (e.key.length > 1) {
-    if (
+    if (e.key.toUpperCase() === "BACKSPACE" && index === 1 && val.charAt(index) === " ") {
+      e.preventDefault();
+      e.target.value =val.substring(index+1);
+      task6.setSelectionRange(index - 1, index - 1);
+    }
+    else if (
       e.key.toUpperCase() === "BACKSPACE" &&
       ((index > 2 &&
         val.charAt(index - 2) === " " &&
@@ -174,7 +179,8 @@ function task6fun(e) {
           val.substring(index + 1);
         task6.setSelectionRange(index - 1, index - 1);
       }
-    } else if (
+    }
+     else if (
       e.key.toUpperCase() === "BACKSPACE" &&
       val.charAt(index - 1) === " "
     ) {
@@ -190,14 +196,18 @@ function task6fun(e) {
       e.preventDefault();
       e.target.value = val.substring(0, index - 2) + val.substring(index);
       task6.setSelectionRange(index - 1, index - 1);
-    } else if (e.key.toUpperCase() === "BACKSPACE" && index === 1) {
-      e.preventDefault();
-      e.target.value = val.substring(0, index - 2) + val.substring(index);
-      task6.setSelectionRange(index - 1, index - 1);
-    }
+    } 
   } else {
-    // console.log(task6.selectionStart);
-    if (key === space && index === 0) {
+    if (
+      index > 0 &&
+      val.charAt(index - 1) !== " " &&
+      isAlpahbet(asciiValue(e.key))
+    ) {
+      e.preventDefault();
+      e.target.value =
+        val.substring(0, index) + e.key.toLowerCase() + val.substring(index);
+      task6.setSelectionRange(index + 1, index + 1);
+    } else if (key === space && index === 0) {
       e.preventDefault();
     } else if (
       key === space &&

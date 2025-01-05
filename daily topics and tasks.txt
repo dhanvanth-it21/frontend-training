@@ -104,11 +104,19 @@ JavaScript Class --> 2/1/25
 --------------------------------------------------------------------------------------------------------------
 JavaScript Class ---> 3/1325
 
-plugin creation using js
+Plugin Creation Using JavaScript
 
-json format -> array of objects as input
-convert them into a html webpage using only js
+1. JSON Format -> Array of Objects as Input
+	- Convert them into an HTML webpage using only JavaScript
+
+2. Create a Plugin
+	- For creating table structure / any structure using an array of objects
+
+3. With Two Column Inputs
+	- Validation rules to be specified: numeric / alphabet / combination
+	- Error message
 
 --------------------------------------------------------------------------------------------------------------
+valdiation to the forms
 fetch API
 rest API
