@@ -1,109 +1,103 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 #main-header {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  background-color: green;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
 .header-content {
-    margin: 10px;
+  margin: 10px;
 }
 
 #main-header h1 {
-    font-family: 'Arial', sans-serif;
-    font-size: 2.5em;
+  font-family: "Arial", sans-serif;
+  font-size: 2.5em;
 }
 
 #main-content {
-    display: flex;
-    align-items: center;
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #fff;
-    
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #fff;
 }
 
 .form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #efefef;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #efefef;
 }
 
-
-
-
-
 #user-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .user-form-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;   
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .user-form-inputs > div {
-    flex-grow: 1;
+  flex: 1 1 40%;
+  /* flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: calc(40%);
-    display: flex;
-    flex-direction: column;
+    flex-basis: 40%; */
+  display: flex;
+  flex-direction: column;
 }
 
 .user-form-inputs > div > select {
-    padding: 9px;
-    border: 1px solid #000;
-    border-radius: 5px;
+  padding: 9px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 .user-form-inputs-label {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .user-form-inputs label {
-    margin-bottom: 5px;
-    font-weight: bold;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .user-form-inputs p {
-    color: red;
-    font-size: 12px;
+  color: red;
+  font-size: 12px;
 }
 
 .user-form-inputs input {
-    padding: 10px;
-    border: 1px solid #000;
-    border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
-
 .user-form-button {
-    width: 50%;
-    margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .user-form-button button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .user-form-button button:hover {
-    background-color: darkgreen;
+  background-color: darkgreen;
 }
-

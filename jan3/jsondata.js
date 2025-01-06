@@ -47,7 +47,7 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "first-name-status"
+                            id: "first-name-status",
                           },
                         ],
                       },
@@ -57,7 +57,8 @@ export const elements = [
                           type: "text",
                           id: "first-name",
                           name: "first-name",
-                          placeholder: "Dhanvanth"
+                          placeholder: "Dhanvanth",
+                          pattern: "[A-Za-z]{3}",
                         },
                       },
                     ],
@@ -77,7 +78,7 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "last-name-status"
+                            id: "last-name-status",
                           },
                         ],
                       },
@@ -107,13 +108,18 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "age-status"
+                            id: "age-status",
                           },
                         ],
                       },
                       {
                         tag: "input",
-                        attributes: { type: "text", id: "age", name: "age", placeholder: "21" },
+                        attributes: {
+                          type: "text",
+                          id: "age",
+                          name: "age",
+                          placeholder: "21",
+                        },
                       },
                     ],
                   },
@@ -132,7 +138,7 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "gender-status"
+                            id: "gender-status",
                           },
                         ],
                       },
@@ -179,7 +185,7 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "email-status"
+                            id: "email-status",
                           },
                         ],
                       },
@@ -209,13 +215,18 @@ export const elements = [
                           {
                             tag: "p",
                             text: "*",
-                            id: "phone-status"
+                            id: "phone-status",
                           },
                         ],
                       },
                       {
                         tag: "input",
-                        attributes: { type: "tel", id: "phone", name: "phone", placeholder: "9876543210" },
+                        attributes: {
+                          type: "text",
+                          id: "phone",
+                          name: "phone",
+                          placeholder: "9876543210",
+                        },
                       },
                     ],
                   },

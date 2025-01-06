@@ -107,19 +107,23 @@ function makeSmall(str) {
 //------------------------------------------------------------------------------------------------------------------------------------
 firstName.addEventListener("keypress", firstNameValidation);
 firstName.addEventListener("keyup", firstNameValidationstatus);
+firstName.addEventListener("paste", (e) => e.preventDefault());
 
 lastName.addEventListener("keydown", lastNameValidation);
 lastName.addEventListener("keyup", lastNameValidationstatus);
+lastName.addEventListener("paste", (e) => e.preventDefault());
 
 age.addEventListener("keypress", ageValidation);
 age.addEventListener("input", ageValidationstatus);
+age.addEventListener("paste", (e) => e.preventDefault());
 
 email.addEventListener("keypress", emailValidation);
 email.addEventListener("input", emailValidationStatus);
+email.addEventListener("paste", (e) => e.preventDefault());
 
 phone.addEventListener("keypress", phoneValidation);
 phone.addEventListener("input", phoneValidationStatus);
-
+phone.addEventListener("paste", phoneValidationPaste);
 
 gender.addEventListener("change", genderValidation);
 //--------------------------------------------------------------------------------------------------------------------------------------
@@ -142,6 +146,7 @@ function firstNameValidation(e) {
     e.preventDefault();
   }
 }
+
 //-------------------------------------------------------------------------------------------------------------------------------------------
 function lastNameValidation(e) {
   const val = e.target.value;
@@ -242,22 +247,21 @@ function ageValidation(e) {
   const key = e.key;
   const keyLen = key.length;
   const index = age.selectionStart;
-  console.log(index,val,len,key,keyLen)
-  if(!isNum(key) || len >= 2 || (len === 0 && key === "0")){
-    e.preventDefault()
+  if (!isNum(key) || len >= 2 || (len === 0 && key === "0")) {
+    e.preventDefault();
   }
-  if(len === 1) {
-    if(index === 0){
-      e.preventDefault()
+  if (len === 1) {
+    if (index === 0) {
+      e.preventDefault();
       const ageVal = parseInt(`${key}${val}`);
-      if(ageVal >= 18){
-        e.target.value = `${key}${val}`
+      if (ageVal >= 18) {
+        e.target.value = `${key}${val}`;
       }
     }
     const ageVal = parseInt(`${val}${key}`);
-    
-    if(ageVal < 18) {
-      e.preventDefault()
+
+    if (ageVal < 18) {
+      e.preventDefault();
       e.target.value = "";
     }
   }
@@ -270,8 +274,6 @@ function emailValidation(e) {
   const key = e.key;
   const keyLen = key.length;
   const index = email.selectionStart;
-
-  
 }
 
 function emailValidationStatus(e) {
@@ -279,12 +281,10 @@ function emailValidationStatus(e) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const check = emailPattern.test(val);
   const emailStatus = document.getElementById("email-status");
-  if(check){
+  if (check) {
     emailStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
     emailStatus.style.color = "green";
-
-  }
-  else {
+  } else {
     emailStatus.innerHTML = "* Enter a valid email";
     emailStatus.style.color = "red";
   }
@@ -297,22 +297,60 @@ function phoneValidation(e) {
   const keyLen = key.length;
   const index = phone.selectionStart;
   if (!isNum(key) || len >= 10) {
+    const phonStatus = document.getElementById("phone-status");
     e.preventDefault();
+    if (!isNum(key)) {
+      phonStatus.innerHTML = "* Enter only digit";
+    } else {
+      phonStatus.innerHTML = "* Phone Number must be 10 digit";
+    }
+    if (len === 10) {
+      phoneValidationStatus(e);
+    }
   }
 }
 
 function phoneValidationStatus(e) {
   const val = e.target.value;
-  const phonePattern = /^[7-9][0-9]{9}$/;
+  const phonePattern = /^[6-9][0-9]{9}$/;
   const check = phonePattern.test(val);
   const phonStatus = document.getElementById("phone-status");
-  if(check){
+  if (check) {
     phonStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
     phonStatus.style.color = "green";
-  }
-  else {
+  } else {
     phonStatus.innerHTML = "* Enter a valid Phone Number";
     phonStatus.style.color = "red";
+    if (val.length >= 10) {
+      phonStatus.innerHTML = "* Phone Number must be 10 digit";
+      e.target.value = "";
+    }
+    if (isNaN(parseInt(val))) {
+      phonStatus.innerHTML = "* Enter only digit";
+      e.target.value = "";
+    }
+  }
+}
+
+function phoneValidationPaste(e) {
+  const val = e.target.value;
+  const pasteVal = e.clipboardData.getData("text");
+  console.log(pasteVal);
+  const phonePattern = /^[6-9][0-9]{9}$/;
+  const check = phonePattern.test(val);
+  const validity = check && val.length === 10;
+  const phonStatus = document.getElementById("phone-status");
+  if (validity) {
+    phonStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    phonStatus.style.color = "green";
+  } else {
+    phonStatus.innerHTML = "* Enter a valid Phone Number";
+    phonStatus.style.color = "red";
+    if ((val + pasteVal).length >= 10) {
+      e.preventDefault();
+      e.target.value = "";
+      phonStatus.innerHTML = "* Phone Number must be 10 digit";
+    }
   }
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------
@@ -343,7 +381,6 @@ function ageValidationstatus(e) {
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------
 function firstNameValidationstatus(e) {
-  console.log("hello")
   const val = e.target.value;
   const len = val.length;
   const firstNameStatus = document.getElementById("first-name-status");
@@ -357,7 +394,6 @@ function firstNameValidationstatus(e) {
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------
 function lastNameValidationstatus(e) {
-  console.log("hello")
   const val = e.target.value;
   const len = val.length;
   const lastNameStatus = document.getElementById("last-name-status");

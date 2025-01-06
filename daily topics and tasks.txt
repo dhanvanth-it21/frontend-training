@@ -102,7 +102,7 @@ JavaScript Class --> 2/1/25
 5. Only Positive Numbers
 	
 --------------------------------------------------------------------------------------------------------------
-JavaScript Class ---> 3/1325
+JavaScript Class ---> 3/1/25
 
 Plugin Creation Using JavaScript
 
@@ -120,3 +120,10 @@ Plugin Creation Using JavaScript
 valdiation to the forms
 fetch API
 rest API
+
+
+----------------------------------------------------------------------------------------------------------------
+JavaScript Class ---> 6/1/25
+promise, promise all
+
+try, catch, finally, then, await, async, polyfill, js callback hell
