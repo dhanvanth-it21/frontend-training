@@ -1,71 +1,61 @@
-// Promise
+// const apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
 
-// Promise is a JavaScript object for asynchronous operation.
-// State: pending -> fulfilled or rejected
-// Producer vs Consumer
+// async function fetchData() {
+//     try {
+//         const response = await fetch(apiUrl);
+//         if (!response.ok) {
+//             throw new Error('Response not Ok : ' + response.statusText);
+//         }
+//         const data = await response.json();
+//         displayData(data);
+//     } catch (error) {
+//         console.error('Error:', error);
+//     }
+// }
 
-// 1. Producer
-// when new Promise is created, the executor runs automatically.
-const data  = false;
+// // fetch(apiUrl).then(
+// //     (response) => {
+// //         if (!response.ok) {
+// //             throw new Error('Response not Ok : ' + response.statusText);
+// //         }
+// //         const data = response.json();
+// //        data.then((data) => displayData(data))
+// //     },
+// //     (error) => {
+// //         console.error('There');
+// //     }
+// // )
+// // // .then((data) => displayData(data))
+// // .catch((error) => console.log("error !!!!!", error)
+// // )
 
-const promise = new Promise((resolve, reject) => {
-    console.log('doing something...');
-    setTimeout(() => {
-        if(data) resolve('ellie');
-        reject(new Error('no network'));
-    }, 2000);
-});
+// function displayData(data) {
+//     console.log(data);
+//     const container = document.body;
+//     for(const item in data){
+//         console.log(item)
+//         const div = document.createElement('div');
+//         div.innerHTML = `<h3>${data[item]}</h3>`;
+//         container.appendChild(div);
+//     }
+// }
 
-// 2. Consumers: then, catch, finally
-promise
-    .then((value) => {
-        console.log(value);
-    })
-    .catch(error => {
-        console.log(error);
-    })
-    .finally(() => {
-        console.log('finally');
-    }); 
+// window.onload = fetchData;
 
-// 3. Promise chaining
-const fetchNumber = new Promise((resolve, reject) => {
-    setTimeout(() => resolve(1), 1000);
-});
+// -------------------------------------------------------------------------------------------------------------
 
-fetchNumber
-    .then(num => num * 2)
-    .then(num => num * 3)
-    .then(num => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => resolve(num - 1), 1000);
-        });
-    })
-    .then(num => console.log(num));
+// const p1 = Promise.all([1,2,3,4])
+// console.log(p1)
 
-// 4. Error Handling
-const getHen = () =>
-    new Promise((resolve, reject) => {
-        setTimeout(() => resolve('🐓'), 1000);
-    });
+// const a = true;
+// const p2 = Promise.all([1,delayFun(),3,4,Promise.resolve("resolved")])
+// console.log(p2)
 
-const getEgg = hen =>
-    new Promise((resolve, reject) => {
-        setTimeout(() => reject(new Error(`error! ${hen} => 🥚`)), 1000);
-    });
-
-const cook = egg =>
-    new Promise((resolve, reject) => {
-        setTimeout(() => resolve(`${egg} => 🍳`), 1000);
-    });
-
-getHen()
-    .then(getEgg)
-    .catch(error => {
-        return '🥖';
-    })
-    .then(cook)
-    .then(console.log)
-    .catch(data => console.log(`data ${data}`));
+// function delayFun() {
+//     return new Promise((resolve,reject) => {
+//         if(a) resolve("Super");
+//         else reject("Not Super");
+//     })
+// }
 
 

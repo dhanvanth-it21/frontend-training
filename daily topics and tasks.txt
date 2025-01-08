@@ -124,6 +124,18 @@ rest API
 
 ----------------------------------------------------------------------------------------------------------------
 JavaScript Class ---> 6/1/25
-promise, promise all
+promise,
+try, catch, finally,
+promise all
+then,
+polyfill, 
+js callback hell,
+await, async,
+promise all
 
-try, catch, finally, then, await, async, polyfill, js callback hell
+
+--------------------------------------------------------------------------------------------------------------------
+
+reserved words 
+
+garbage, heap memory, stack memory, token
