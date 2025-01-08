@@ -107,10 +107,10 @@ function makeSmall(str) {
 //------------------------------------------------------------------------------------------------------------------------------------
 firstName.addEventListener("keypress", firstNameValidation);
 firstName.addEventListener("keyup", firstNameValidationstatus);
-firstName.addEventListener("paste", (e) => e.preventDefault());
+firstName.addEventListener("blur", firstNameFinalValidation);
 
 lastName.addEventListener("keydown", lastNameValidation);
-lastName.addEventListener("keyup", lastNameValidationstatus);
+// lastName.addEventListener("keyup", lastNameValidationstatus);
 lastName.addEventListener("paste", (e) => e.preventDefault());
 
 age.addEventListener("keypress", ageValidation);
@@ -142,8 +142,60 @@ function firstNameValidation(e) {
         val.substring(0, index) + key.toLowerCase() + val.substring(index);
       firstName.setSelectionRange(index + 1, index + 1);
     }
-  } else if (isSpace(key) || !isAlpha(key)) {
+    firstNameValidationstatus(e, null);
+  } else if (isSpace(key)) {
     e.preventDefault();
+    firstNameValidationstatus(e, "Spaces are not allowed");
+  } else if (!isAlpha(key)) {
+    e.preventDefault();
+    firstNameValidationstatus(e, "Only alphabets are allowed");
+  }
+}
+
+function firstNameValidationstatus(e, error = null) {
+  const val = e.target.value;
+  const len = val.length;
+  if (error === null) error = "";
+  const firstNameStatus = document.getElementById("first-name-status");
+  if (len >= 3) {
+    firstNameStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${error}`;
+    firstNameStatus.style.color = "green";
+  } else {
+    firstNameStatus.innerHTML = `* ${error}`;
+    firstNameStatus.style.color = "red";
+  }
+  // setTimeout(() => {
+  //   if (error === "Only First Name allowed") {
+  //     console.log(val)
+  //     firstNameStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+  //     firstNameStatus.style.color = "green";
+  //   }
+  // }, 4000);
+}
+
+function firstNameFinalValidation(e) {
+  const val = e.target.value;
+  if (val.length <= 2) {
+    firstNameValidationstatus(e, "Enter a valid input");
+    return;
+  }
+  const valArray = val.split(" ");
+  const firstNameVal = valArray[0];
+  e.target.value = firstNameVal;
+  if (valArray.length > 1) {
+    firstNameValidationstatus(e, "Only First Name allowed");
+    if (firstNameVal.length < 3) {
+      e.target.value = "";
+      firstNameValidationstatus(
+        e,
+        "Only First Name allowed, must be 3 characters"
+      );
+    }
+  }
+  const nonAlpha = firstNameVal.split(/[^a-zA-Z]/);
+  if (nonAlpha.length > 1) {
+    e.target.value = "";
+    firstNameValidationstatus(e, "Only alphabets are allowed");
   }
 }
 
@@ -380,18 +432,7 @@ function ageValidationstatus(e) {
   }
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------
-function firstNameValidationstatus(e) {
-  const val = e.target.value;
-  const len = val.length;
-  const firstNameStatus = document.getElementById("first-name-status");
-  if (len >= 3) {
-    firstNameStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-    firstNameStatus.style.color = "green";
-  } else {
-    firstNameStatus.innerHTML = "* Enter a valid first name";
-    firstNameStatus.style.color = "red";
-  }
-}
+
 //-------------------------------------------------------------------------------------------------------------------------------------------
 function lastNameValidationstatus(e) {
   const val = e.target.value;
