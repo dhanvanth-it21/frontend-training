@@ -136,17 +136,20 @@ function firstNameValidation(e) {
   if (keyLen === 1 && isAlpha(key)) {
     e.preventDefault();
     if (index === 0) {
-      e.target.value = key.toUpperCase() + val.substring(1);
+      e.target.value = key.toUpperCase() + val.substring(0).toLowerCase();
+      console.log(key.toUpperCase() , val.substring(0).to)
     } else {
       e.target.value =
         val.substring(0, index) + key.toLowerCase() + val.substring(index);
       firstName.setSelectionRange(index + 1, index + 1);
     }
     firstNameValidationstatus(e, null);
-  } else if (isSpace(key)) {
+  } 
+  else if (isSpace(key)) {
     e.preventDefault();
     firstNameValidationstatus(e, "Spaces are not allowed");
-  } else if (!isAlpha(key)) {
+  } 
+  else if (!isAlpha(key)) {
     e.preventDefault();
     firstNameValidationstatus(e, "Only alphabets are allowed");
   }
