@@ -76,6 +76,24 @@
 // // limitations : of GC :
 // //      can't explicitly call GC
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //-----------------------------------------------------------------------------------------------------------------
 //-------------------------------------------Math.randdom----------------------------------------------------------
 
@@ -92,16 +110,19 @@
 // console.log(num5)
 
 // const arr = [];
+const map = new Map();
 
-// for(let i  = 0; i < 10000000; i++) {
-//   const num = Math.random();
-//   const len = num.toString().length - 2;
-//   if(!arr.includes(len)) {
-//     arr.push(len);
-//   }
-// }
+for(let i  = 0; i < 10000000; i++) {
+  const num = Math.random();
+  const len = num.toString().length - 2;
+  // if(!arr.includes(len)) {
+  //   arr.push(len);
+  // }
+  map.set(len, (map.get(len) || 0) + 1);
+}
 
 // console.log(arr.sort());
+console.log(map);
 
 // const setVar = new Set();
 
@@ -113,42 +134,60 @@
 
 // console.log(setVar);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // -----------------------------------------------------------------------------------------------------------------
 // ------------------------------------------------Ployfill---------------------------------------------------------
-const arr = [];
-// const arr1 = ["D",'dhanvanth',1,true,false,{name : "sb"},-10];
+// const arr = [];
+// // const arr1 = ["D",'dhanvanth',1,true,false,{name : "sb"},-10];
 
-if (!Array.prototype.min) {
-  Array.prototype.minmax = function (isMax = false) {
-    const sortedArr = [...this].sort();
-    return isMax ? sortedArr[sortedArr.length - 1] : sortedArr[0];
-    // return isMax ? Math.max(...this) : Math.min(...this);
-  };
-}
+// if (!Array.prototype.min) {
+//   Array.prototype.minmax = function (isMax = false) {
+//     const sortedArr = [...this].sort();
+//     return isMax ? sortedArr[sortedArr.length - 1] : sortedArr[0];
+//     // return isMax ? Math.max(...this) : Math.min(...this);
+//   };
+// }
 
-const minVal = arr.minmax();
-const maxVal = arr.minmax(true);
+// const minVal = arr.minmax();
+// const maxVal = arr.minmax(true);
 
-console.log(minVal);
-console.log(maxVal);
+// console.log(minVal);
+// console.log(maxVal);
 
-// returning array with unique elements in an array
+// // returning array with unique elements in an array
 
 
 
-if (!Array.prototype.uniqueElements) {
-  Array.prototype.uniqueElements = function () {
+// if (!Array.prototype.uniqueElements) {
+//   Array.prototype.uniqueElements = function () {
 
-    const arrAsSet = [];
-    this.forEach(i => {
-      if(!arrAsSet.includes(i)) arrAsSet.push(i);
-    });
-    return arrAsSet;
+//     const arrAsSet = [];
+//     this.forEach(i => {
+//       if(!arrAsSet.includes(i)) arrAsSet.push(i);
+//     });
+//     return arrAsSet;
 
-    // const set = new Set(this);
-    // return Array.from(set);
+//     // const set = new Set(this);
+//     // return Array.from(set);
 
-  };
-}
+//   };
+// }
 
-console.log(arr.uniqueElements());
+// console.log(arr.uniqueElements());

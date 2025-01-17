@@ -158,8 +158,8 @@ function calTotalMark(a) {
     (acc, curVal) => acc + curVal,
     0
   );
-  // subcriber.callSubcriber(a);
-  a();
+  subcriber.callSubcriber(a);
+  // a();
 }
 
 function calAvgMark(a) {
@@ -168,22 +168,22 @@ function calAvgMark(a) {
   stats.avgMark = avgMark.innerText =
     Object.values(marks).reduce((acc, curVal) => acc + curVal, 0) /
     Object.keys(marks).length;
-  // subcriber.callSubcriber(a);
-  a();
+  subcriber.callSubcriber(a);
+  // a();
 }
 
 function calMinMark(a) {
   const minMark = document.getElementById("min-mark");
   stats.minMark = minMark.innerText = Math.min(...Object.values(marks));
-  // subcriber.callSubcriber(a);
-  a();
+  subcriber.callSubcriber(a);
+  // a();
 }
 
 function calMaxMark(a) {
   const maxMark = document.getElementById("max-mark");
   stats.maxMark = maxMark.innerText = Math.max(...Object.values(marks));
-  // subcriber.callSubcriber(a);
-  a();
+  subcriber.callSubcriber(a);
+  // a();
 }
 
 function calPercentage(a) {
@@ -196,6 +196,6 @@ function calPercentage(a) {
   //   ((totalMarks / (Object.keys(marks).length * 100)) * 100).toFixed(2)
   // );
   percentage.innerText = `${stats.percentage}%`;
-  // subcriber.callSubcriber(a);
-  a();
+  subcriber.callSubcriber(a);
+  // a();
 }

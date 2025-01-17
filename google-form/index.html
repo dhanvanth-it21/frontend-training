@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/7fb028453d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Google Form</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="nav-form-info">
+          <div class="nav-logo">
+            <img src="images/gf.png" alt="Google Logo" />
+          </div>
+          <div class="nav-title">
+            <input type="text" value="Untitled form" id="form-title" />
+            <div class="underline"></div>
+          </div>
+        </div>
+        <div class="nav-form-account">
+          <div class="nav-from-account-details">
+            <button class="publish">Publish</button>
+            <div class="nav-form-settings">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="nav-separator"></div> -->
+      <div class="nav-pages">
+        <input
+          type="radio"
+          id="questions"
+          name="nav-page"
+          class="page-selection"
+          checked
+        />
+        <label for="questions" class="page-selection">Questions</label>
+        <input
+          type="radio"
+          id="responses"
+          name="nav-page"
+          class="page-selection"
+        />
+        <label for="responses" class="page-selection">Responses</label>
+        <input
+          type="radio"
+          id="settings"
+          name="nav-page"
+          class="page-selection"
+        />
+        <label for="settings" class="page-selection">Settings</label>
+      </div>
+    </nav>
+    <div class="form-body-container">
+      <div class="form-heading">
+        <div class="form-heading-title-div">
+          <input type="text" class="form-heading-title-input" />
+        </div>
+        <div class="form-heading-discription-div">
+          <input
+            type="text"
+            placeholder="Form description"
+            class="form-heading-discription-input"
+          />
+        </div>
+      </div>
+
+      <div class="question-container">
+        <div class="question-selection">
+          <input type="text" placeholder="Question" />
+          <div class="question-type-selection-container">
+            <div class="select-btn">
+              <div class="question-type"></div>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+          </div>
+          <div class="question-type-options">
+            <ul class="options">
+              <li class="option">
+                <i class="fa-regular fa-circle-dot"></i>
+                <span>Multiple Choice</span>
+              </li>
+              <li class="option">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>Paragraph</span>
+              </li>
+              <li class="option">
+                <i class="fa-regular fa-square-check"></i>
+                <span>Checkboxes</span>
+              </li>
+              <li class="option">
+                <i class="fa-regular fa-square-caret-down"></i>
+                <span>Drop Down</span>
+              </li>
+              <li class="option">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Date</span>
+              </li>
+              <li class="option">
+                <i class="fa-regular fa-clock"></i>
+                <span>Time</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="question-separator"></div>
+        <!-- --------------------------------------------------------- -->
+        <div class="question-selected-type-container"></div>
+        <!-- --------------------------------------------------------- -->
+      </div>
+    </div>
+    <div class="side-menu">
+      
+    </div>
+  </body>
+  <script type="module" src="script.js"></script>
+</html>
