@@ -225,4 +225,3 @@ export const elements = [
   },
 ];
 
-export const styles = [];
