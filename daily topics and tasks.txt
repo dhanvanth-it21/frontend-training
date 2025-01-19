@@ -210,3 +210,10 @@ jan6		--->		script for fetch with async, await and Promise.all()
 jan7		--->		examples of Garbage Collection in JS, Math.random, Ployfill
 jan11		--->		store task
 
+
+
+html file routing
+web server
+document
+module
+building blocks of angular framework

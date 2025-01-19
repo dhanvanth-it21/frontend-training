@@ -49,10 +49,10 @@ export function createHtmlPage(elements,appendElement) {
 
   export function createElement(elements,appendElement){
 
-      const arr = createHtmlPage(elements);
+      const arr = createHtmlPage(elements, appendElement);
       
-      arr.forEach((tag) => {
-          appendElement.appendChild(tag);
+      arr.forEach((ele) => {
+          appendElement.appendChild(ele);
       });
       return arr;
   }

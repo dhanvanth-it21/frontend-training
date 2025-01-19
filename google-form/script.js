@@ -11,10 +11,10 @@ import {
   timeType,
   dateType,
   questionTypeOptionList,
-  questionContainer
+  questionContainer,
 } from "./data.js";
 
-//------------------------------ Window Loading -------------------------------
+//------------------------------ form heading functionalities -------------------------------
 const formTitle = document.getElementById("form-title");
 const underline = document.querySelector(".underline");
 
@@ -38,52 +38,92 @@ formHeadingTitleInput.addEventListener("blur", () => {
   }
 });
 
-//-------------------------- Form Body Interaction ---------------------------
+//------------------------------------------------- side menu and the active div ---------------------------------------------------
 const listOfDiv = document.querySelectorAll(".form-body-container > div");
 listOfDiv.forEach((div) => {
+  sideMenu(div);
+});
+
+function sideMenu(div) {
   div.addEventListener("click", () => {
+    //Marking the active div
     listOfDiv.forEach((div) => {
       div.classList.remove("active-box");
     });
     div.classList.add("active-box");
+
+    //side-menu positioning
     const rect = div.getBoundingClientRect();
     const sideMenu = document.querySelector(".side-menu");
     sideMenu.style.left = `${rect.right + 10}px`;
     sideMenu.style.top = `${rect.top}px`;
     sideMenu.style.height = `${rect.height}px`;
-    sideMenu.style.display = "block";
+    sideMenu.style.display = "flex";
   });
+}
+
+const addQuestion = document.querySelector(".add-question");
+addQuestion.addEventListener("click", () => {
+  questionContainerFun();
 });
 
-//---------------------- Question Type Selection -----------------------------
-const questionType = document.querySelector(".question-type"); // Selected question type
-const questionTypeSelectionContainer = document.querySelector(
-  ".question-type-selection-container"
-); // Button to change the type
-const questionTypeList = document.querySelectorAll(".option"); // List of question types
-const questionTypeOptions = document.querySelector(".question-type-options"); // Div containing the list of question types
+//-------------------------------------------------Question type option list----------------------------------------------
 
-questionType.innerHTML = questionTypeList[0].innerHTML;
+function questionTypeOptionFun() {
+  const questionSelection = document.querySelector(".question-selection");
+  createElement(questionTypeOptionList, questionSelection);
+  questionTypeSelectionFun();
+}
 
-questionTypeSelectionContainer.addEventListener("click", () => {
-  questionTypeOptions.style.display = "flex";
-});
+//--------------------------------------------------Question container----------------------------------------------------
+function questionContainerFun() {
+  const formBodyContainer = document.querySelector(".form-body-container");
+  const div = createElement(questionContainer, formBodyContainer);
+  questionTypeOptionFun();
+  sideMenu(div[0]);
+}
 
-document.addEventListener("click", (event) => {
-  if (!questionTypeSelectionContainer.contains(event.target) && !questionTypeOptions.contains(event.target)) {
-    questionTypeOptions.style.display = "none";
-  }
-});
+//----------------------------------------------- Question Type Selection--------------------------------------------------
 
-questionTypeList.forEach((option) => {
-  option.addEventListener("click", () => {
-    questionType.innerHTML = option.innerHTML;
-    questionTypeOptions.style.display = "none";
-    const qtype = questionType.querySelector("span").innerText;
-    selectedQuestionType(qtype);
+function questionTypeSelectionFun() {
+  const questionType = document.querySelector(".question-type"); // Selected question type
+  const questionTypeSelectionContainer = document.querySelector(
+    ".question-type-selection-container"
+  ); // Button to change the type
+  const questionTypeList = document.querySelectorAll(".option"); // List of question types
+  const questionTypeOptions = document.querySelector(".question-type-options"); // Div containing the list of question types
+
+  //default question type
+  questionType.innerHTML = questionTypeList[0].innerHTML;
+  selectedQuestionType(questionType.querySelector("span").innerText);
+
+  //showing the question type options
+  questionTypeSelectionContainer.addEventListener("click", () => {
+    questionTypeOptions.style.display = "flex";
   });
-});
 
+  //hiding the question type options
+  document.addEventListener("click", (event) => {
+    if (
+      !questionTypeSelectionContainer.contains(event.target) &&
+      !questionTypeOptions.contains(event.target)
+    ) {
+      questionTypeOptions.style.display = "none";
+    }
+  });
+
+  //selecting the question type
+  questionTypeList.forEach((option) => {
+    option.addEventListener("click", () => {
+      questionType.innerHTML = option.innerHTML;
+      questionTypeOptions.style.display = "none";
+      const qtype = questionType.querySelector("span").innerText;
+      selectedQuestionType(qtype);
+    });
+  });
+}
+
+//navigating to question type generator
 function selectedQuestionType(qtype) {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -104,7 +144,10 @@ function selectedQuestionType(qtype) {
   }
 }
 
-//---------------------- Markdown - Multiple Choice --------------------------
+//------------------------------------------------Question Type Generation----------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+//----------- Markdown - Multiple Choice ----------------
 function createMarkDown() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -125,7 +168,7 @@ function createMarkDown() {
   });
 }
 
-//---------------------- Markdown - CheckBox --------------------------------
+//----------- Markdown - CheckBox --------------------
 function createMarkDownCheckbox() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -146,7 +189,7 @@ function createMarkDownCheckbox() {
   });
 }
 
-//---------------------- Markdown - Drop Down -------------------------------
+//----------- Markdown - Drop Down ----------------
 function createMarkDownDropDown() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -180,7 +223,7 @@ function createMarkDownDropDown() {
   });
 }
 
-//---------------------- Paragraph -------------------------------------------
+//--------- Paragraph -----------------------
 function createParagraph() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -189,7 +232,7 @@ function createParagraph() {
   createElement(paragraph, questionSelectedTypeContainer);
 }
 
-//---------------------- Time ------------------------------------------------
+//---------- Time -----------------------
 function createTime() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
@@ -198,7 +241,7 @@ function createTime() {
   createElement(timeType, questionSelectedTypeContainer);
 }
 
-//---------------------- Date ------------------------------------------------
+//--------- Date --------------------------
 function createDate() {
   const questionSelectedTypeContainer = document.querySelector(
     ".question-selected-type-container"
