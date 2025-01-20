@@ -1,58 +1,36 @@
+import { createHtmlPage, elements } from "./generator.js";
 import { Subcriber } from "./subscriber.js";
-import { marks, stats, elements } from "./data.js";
+import { marks, stats } from "./data.js";
 
 //-------------------------------Page Creation--------------------------------------------------
-function createHtmlPage(elements) {
-  const arr = [];
-  elements.forEach((element) => {
-    const tag = document.createElement(element.tag);
-    if (element.class) {
-      tag.classList.add(`${element.class}`);
-    }
-    tag.textContent = element.text;
-    addingStyle(element, tag);
-    if (element.children) {
-      const childArr = createHtmlPage(element.children);
-      childArr.forEach((childTag) => {
-        tag.appendChild(childTag);
-      });
-    }
-    if (element.attributes) {
-      for (const i in element.attributes) {
-        tag.setAttribute(`${i}`, `${element.attributes[i]}`);
-      }
-    }
-    for (const i in element) {
-      if (
-        !(
-          i === "tag" ||
-          i === "class" ||
-          i === "text" ||
-          i === "children" ||
-          i === "style" ||
-          i === "attributes"
-        )
-      ) {
-        tag.setAttribute(`${i}`, `${element[i]}`);
-      }
-    }
-    arr.push(tag);
-  });
-  return arr;
-}
 
-function addingStyle(element, tag) {
-  for (const style in element.style) {
-    tag.style[style] = element.style[style];
-  }
-}
 
 const arr = createHtmlPage(elements);
-
 arr.forEach((tag) => {
   document.body.appendChild(tag);
 });
 
+addButton();
+function addButton() {
+  const showButtonDiv = document.createElement("div");
+  showButtonDiv.classList.add("show-button-div");
+  const showButton = document.createElement("button");
+  showButton.classList.add("show-button");
+  showButton.innerText = "Show";
+  showButtonDiv.appendChild(showButton);
+  const outputContainer = document.querySelector(".outer-container");
+  outputContainer.appendChild(showButtonDiv);
+  
+}
+
+// const listOfMarks = document.querySelectorAll('.outer-container ul li');
+// console.log(listOfMarks);
+// listOfMarks.forEach((li) => {
+//   const inputTag = document.createElement("input");
+//   inputTag.type = "checkbox";
+
+//   li.appendChild(document.createElement("input"))
+// })
 //------------------------------------------------------------------------------------------------------------
 
 //getting mraks from form
@@ -74,20 +52,26 @@ calcSubcriber.addSubscriber(calcMaxMark);
 calcSubcriber.addSubscriber(calcPercentage);
 
 //FE Subcriber List
-const FESubcriber = new Subcriber();
-FESubcriber.addSubscriber(() => {
-  document.querySelector("#total-mark").innerText = stats.totalMark;
-  document.querySelector("#avg-mark").innerText = stats.avgMark;
-  document.querySelector("#min-mark").innerText = stats.minMark;
-  document.querySelector("#max-mark").innerText = stats.maxMark;
-  document.querySelector("#percentage").innerText = stats.percentage;
-});
+const frontEndSubcriber = new Subcriber();
+function addFESubcribers() {
+  frontEndSubcriber.addSubscriber(() => {
+    document.querySelector("#total-mark").innerText = stats.totalMark;
+    document.querySelector("#avg-mark").innerText = stats.avgMark;
+    document.querySelector("#min-mark").innerText = stats.minMark;
+    document.querySelector("#max-mark").innerText = stats.maxMark;
+    document.querySelector("#percentage").innerText = stats.percentage;
+  });
+}
+
+
 
 //event listener for marks input change
 const markInputs = document.querySelectorAll(".subject-marks  li input");
 markInputs.forEach((inputTag) => {
-  inputTag.addEventListener("change", calcAndStore);
+  inputTag.addEventListener("input", calcAndStore);
 });
+
+
 
 //event listener for submit button
 submitButton.addEventListener("click", function (event) {
@@ -95,15 +79,47 @@ submitButton.addEventListener("click", function (event) {
   calcAndStore();
 });
 
+
+
+
+//event listener for show and hide button;
+const showButton = document.querySelector(".show-button");
+const markList = document.querySelector(".outer-container > ul");
+markList.style.color = "red";
+// markList.style.display = "none";
+showButton.addEventListener('click', () => {
+  if(showButton.innerText === "Hide") {
+    frontEndSubcriber.clearSubcriber();
+    showButton.innerText = "Show";
+    markList.style.color = "red";
+    
+
+    // markList.style.display = "none";
+  }
+  else {
+    addFESubcribers();
+    showButton.innerText = "Hide";
+    markList.style.color = "black";
+    // markList.style.display = "block";
+    calcAndStore();
+    
+  }
+
+})
+
+
 function calcAndStore() {
-  marks.english = parseInt(english.value) || marks.english;
-  marks.tamil = parseInt(tamil.value) || marks.tamil;
-  marks.maths = parseInt(maths.value) || marks.maths;
-  marks.science = parseInt(science.value) || marks.science;
-  marks.history = parseInt(history.value) || marks.history;
-  calcSubcriber.callSubcriber();   // update marks in store
-  FESubcriber.callSubcriber();     // update marks in FE
+  marks.english = parseInt(english.value) || 0;
+  marks.tamil = parseInt(tamil.value) || 0;
+  marks.maths = parseInt(maths.value) || 0;
+  marks.science = parseInt(science.value) || 0;
+  marks.history = parseInt(history.value) || 0;
+  calcSubcriber.callSubcriber(); // update marks in store
+  frontEndSubcriber.callSubcriber(); // update marks in FE
 }
+
+
+
 
 //---------------------------------stats calculations-and get stored----------------------------------------------------
 function calcTotalMark() {
@@ -131,5 +147,5 @@ function calcPercentage() {
   stats.percentage = parseFloat(stats.avgMark.toFixed(2));
 }
 
-
+//----------------------------------------------------------------------------------------------
 

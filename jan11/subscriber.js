@@ -10,4 +10,8 @@ export class Subcriber {
   callSubcriber(i = 0) {
     this.subList.forEach((callback,index) => callback(index))
   }
+
+  clearSubcriber() {
+    this.subList = [];
+  }
 }
