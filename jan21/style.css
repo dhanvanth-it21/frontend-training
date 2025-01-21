@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.nav-bar a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+.display-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+}
+
+.home h1, .about h1 {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+form {
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    margin : 0 auto;
+    margin-top: 50px;
+}
+
+.subject-marks {
+    list-style: none;
+}
+
+.subject-marks li {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(84, 84, 254);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.show-button-div {
+    padding: 5px 10px;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.show-button {
+    color: white;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
