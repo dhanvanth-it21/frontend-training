@@ -43,6 +43,42 @@ function addingStyle(element, tag) {
   }
 }
 
+// export const elements = [
+//   {
+//     tag: "nav",
+//     children: [
+//       {
+//         tag: "div",
+//         class: "nav-bar",
+//         children: [
+//           {
+//             tag: "a",
+//             attributes: {
+//               id: "home",
+//               href: "./home",
+//             },
+//             text: "Home",
+//           },
+//           {
+//             tag: "a",
+//             attributes: {
+//               id: "result",
+//               href: "./result",
+//             },
+//             text: "Result",
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     tag: "div",
+//     class: "display-container",
+//     children: [],
+//   },
+// ];
+
+
 export const elements = [
   {
     tag: "nav",
@@ -67,14 +103,6 @@ export const elements = [
             },
             text: "Result",
           },
-          {
-            tag: "a",
-            attributes: {
-              id: "marks",
-              href: "./marks",
-            },
-            text: "Marks",
-          },
         ],
       },
     ],
@@ -82,6 +110,17 @@ export const elements = [
   {
     tag: "div",
     class: "display-container",
-    children: [],
+    children: [
+      {
+        tag: "div",
+        class: "mark-input",
+        children: [],
+      },
+      {
+        tag: "div",
+        class: "mark-output",
+        children: [],
+      },
+    ],
   },
 ];

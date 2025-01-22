@@ -1,4 +1,4 @@
-import { Subscriber } from "./subscriber";
+import { Subscriber } from "./subscriber.js";
 
 export const marks = {
   data: {
@@ -10,15 +10,14 @@ export const marks = {
   },
   subscriber: new Subscriber(),
 
-  updateMarks(subject, value) {
-    if (this.data.hasOwnProperty(subject)) {
-      this.data[subject] = value;
-      this.subscriber.callSubscribers(this.data);
-    }
+  
+  setMark(subject, mark) {
+    this.data[subject] = mark;
+    this.notifySubscribers();
   },
 
-  resetMarks() {
-    Object.keys(this.data).forEach((subject) => (this.data[subject] = 0));
-    this.subscriber.callSubscribers(this.data);
-  },
+  notifySubscribers() {
+    this.subscriber.callSubscribers({ ...this.data });
+  }
+
 };
