@@ -136,7 +136,15 @@ export const elements = [
       },
     ],
   },
+
 ];
+
+// export const elements = [
+//   {
+//     tag: "h1",
+//     text: "Mark details",
+//   },
+// ];
 
 export function loadPage() {
   const arr = createHtmlPage(elements);
@@ -169,20 +177,16 @@ export function loadPage() {
   calcSubcriber.addSubscriber(calcMaxMark);
   calcSubcriber.addSubscriber(calcPercentage);
 
-
-
   //event listener for marks input change
   const markInputs = document.querySelectorAll(".subject-marks  li input");
   markInputs.forEach((inputTag) => {
     inputTag.addEventListener("input", calcAndStore);
   });
 
-
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
     calcAndStore();
   });
-
 
   function calcAndStore() {
     marks.english = parseInt(english.value) || 0;
@@ -192,37 +196,30 @@ export function loadPage() {
     marks.history = parseInt(history.value) || 0;
     calcSubcriber.callSubcriber(); // update marks in store
   }
-  
 
   //---------------------------------stats calculations-and get stored----------------------------------------------------
-function calcTotalMark() {
-  stats.totalMark = Object.values(marks).reduce(
-    (acc, curVal) => acc + curVal,
-    0
-  );
+  function calcTotalMark() {
+    stats.totalMark = Object.values(marks).reduce(
+      (acc, curVal) => acc + curVal,
+      0
+    );
+  }
+
+  function calcAvgMark() {
+    stats.avgMark =
+      Object.values(marks).reduce((acc, curVal) => acc + curVal, 0) /
+      Object.keys(marks).length;
+  }
+
+  function calcMinMark() {
+    stats.minMark = Math.min(...Object.values(marks));
+  }
+
+  function calcMaxMark() {
+    stats.maxMark = Math.max(...Object.values(marks));
+  }
+
+  function calcPercentage() {
+    stats.percentage = parseFloat(stats.avgMark.toFixed(2));
+  }
 }
-
-function calcAvgMark() {
-  stats.avgMark =
-    Object.values(marks).reduce((acc, curVal) => acc + curVal, 0) /
-    Object.keys(marks).length;
-}
-
-function calcMinMark() {
-  stats.minMark = Math.min(...Object.values(marks));
-}
-
-function calcMaxMark() {
-  stats.maxMark = Math.max(...Object.values(marks));
-}
-
-function calcPercentage() {
-  stats.percentage = parseFloat(stats.avgMark.toFixed(2));
-}
-
-
-}
-
-
-
-

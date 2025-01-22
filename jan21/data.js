@@ -1,3 +1,5 @@
+import { Subcriber } from "./subscriber";
+
 export const marks = {
   english: 0,
   tamil: 0,
@@ -12,6 +14,7 @@ export const stats = {
   minMark: 0,
   maxMark: 0,
   percentage: 0,
+  // subList: new Subcriber()
 };
 
 
