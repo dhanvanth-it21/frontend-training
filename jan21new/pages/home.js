@@ -155,7 +155,7 @@ export function loadPage() {
   const markInputs = document.querySelectorAll(".subject-marks  li input");
   markInputs.forEach((inputTag) => {
     inputTag.addEventListener("input", (e) => {
-      marks.setMark(e.target.name, parseInt(e.target.value));
+      marks.setMark(e.target.name, parseInt(e.target.value)||0);
     })
   });
 }

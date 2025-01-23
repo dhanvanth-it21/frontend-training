@@ -111,18 +111,22 @@
 
 // const arr = [];
 const map = new Map();
+const numMap = new Map();
 
-for(let i  = 0; i < 10000000; i++) {
+for(let i  = 0; i < 1000000; i++) {
   const num = Math.random();
   const len = num.toString().length - 2;
-  // if(!arr.includes(len)) {
-  //   arr.push(len);
-  // }
   map.set(len, (map.get(len) || 0) + 1);
+  if(len >= 20 || len <= 12 ){
+    const nums = numMap.get(len) || [];
+    nums.push(num);
+    numMap.set(len, nums);
+  }
 }
 
 // console.log(arr.sort());
 console.log(map);
+console.log(numMap);
 
 // const setVar = new Set();
 

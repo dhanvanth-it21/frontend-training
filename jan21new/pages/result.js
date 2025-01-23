@@ -91,27 +91,55 @@ const elements = [
   },
 ];
 
+
+//this contains the list of functions that are subscribed to the stats object
 export const listOfStatsSubs = [];
 
+//------------------------------------------------load the result page----------------------------------------------
 export function loadPage() {
   const displayContainer = document.querySelector(".mark-output");
+
+
   const arr = createHtmlPage(elements);
-
-  // if (displayContainer.innerHTML === "") {
-  //   arr.forEach((tag) => {
-  //     displayContainer.appendChild(tag);
-  //   });
-  // } else {
-  //   displayContainer.innerHTML = "";
-  //   return;
-  // }
-
   displayContainer.innerHTML = "";
-  arr.forEach((tag) => {
-    displayContainer.appendChild(tag);
-  });
+  arr.forEach((tag) => displayContainer.appendChild(tag));
 
   addButton();
+  const showButton = document.querySelector(".show-button");
+  const markList = document.querySelector(".outer-container > ul");
+  
+  const calculateStatsBind = stats.calculateStats.bind(stats);
+
+  //show or hide the stats
+  function showHide() {
+    if (showButton.innerText === "Hide") {
+      showButton.innerText = "Show";
+      markList.style.color = "red";
+      removeFromListOfStatsSubs(populateStats);
+      marks.subscriber.removeSubscriber(calculateStatsBind);
+    } else {
+      showButton.innerText = "Hide";
+      markList.style.color = "black";
+      addToListOfStatsSubs(populateStats);
+      marks.subscriber.addSubscriber(calculateStatsBind);
+      marks.notifySubscribers();
+    }
+  }
+  
+  //initially hide the stats
+  markList.style.color = "red";
+  showButton.addEventListener("click", showHide);
+
+  //populate the stats
+  function populateStats(data) {
+    document.getElementById("total-mark").textContent = data.totalMark;
+    document.getElementById("avg-mark").textContent = data.avgMark;
+    document.getElementById("min-mark").textContent = data.minMark;
+    document.getElementById("max-mark").textContent = data.maxMark;
+    document.getElementById("percentage").textContent = data.percentage;
+  }
+
+  //add the button to show or hide the stats
   function addButton() {
     const showButtonDiv = document.createElement("div");
     showButtonDiv.classList.add("show-button-div");
@@ -119,49 +147,20 @@ export function loadPage() {
     showButton.classList.add("show-button");
     showButton.innerText = "Show";
     showButtonDiv.appendChild(showButton);
-    const outputContainer = document.querySelector(".outer-container");
-    outputContainer.appendChild(showButtonDiv);
+    document.querySelector(".outer-container").appendChild(showButtonDiv);
   }
+}
 
-  //event listener for show and hide button;
-  const showButton = document.querySelector(".show-button");
-  const markList = document.querySelector(".outer-container > ul");
-  showButton.innerText = "Hide";
-  markList.style.color = "black";
-  listOfStatsSubs.push(populateStats);
-  marks.subscriber.addSubscriber(stats.calculateStats.bind(stats));
-  marks.notifySubscribers();
-  showButton.addEventListener("click", () => {
-    if (showButton.innerText === "Hide") {
-      showButton.innerText = "Show";
-      markList.style.color = "red";
-      const index = listOfStatsSubs.indexOf(populateStats);
-      if (index > -1) {
-        listOfStatsSubs.splice(index, 1);
-      }
-      marks.subscriber.removeSubscriber(stats.calculateStats);
-      console.log(marks.subscriber);
-    } else {
-      showButton.innerText = "Hide";
-      markList.style.color = "black";
-      listOfStatsSubs.push(populateStats);
-      marks.subscriber.addSubscriber(stats.calculateStats.bind(stats));
-      marks.notifySubscribers();
-    }
-  });
+function addToListOfStatsSubs(callback) {
+  if (!listOfStatsSubs.includes(callback)) {
+    listOfStatsSubs.push(callback);
+  }
+}
 
-  document.getElementById("total-mark").textContent = stats.data.totalMark;
-  document.getElementById("avg-mark").textContent = stats.data.avgMark;
-  document.getElementById("min-mark").textContent = stats.data.minMark;
-  document.getElementById("max-mark").textContent = stats.data.maxMark;
-  document.getElementById("percentage").textContent = stats.data.percentage;
-
-  function populateStats(data) {
-    document.getElementById("total-mark").textContent = data.totalMark;
-    document.getElementById("avg-mark").textContent = data.avgMark;
-    document.getElementById("min-mark").textContent = data.minMark;
-    document.getElementById("max-mark").textContent = data.maxMark;
-    document.getElementById("percentage").textContent = data.percentage;
+function removeFromListOfStatsSubs(callback) {
+  const index = listOfStatsSubs.indexOf(callback);
+  if (index > -1) {
+    listOfStatsSubs.splice(index, 1);
   }
 }
 

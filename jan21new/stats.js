@@ -14,9 +14,7 @@ export const stats = {
   subscriber: new Subscriber(),
 
   calculateStats(markData) {
-    console.log(markData)
     const marksArr = Object.values(markData);
-    console.log(marksArr)
     this.data.totalMark = marksArr.reduce((a, b) => a + b, 0);
     this.data.avgMark = this.data.totalMark / marksArr.length;
     this.data.minMark = Math.min(...marksArr);

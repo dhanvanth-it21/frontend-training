@@ -1,4 +1,5 @@
 import { createHtmlPage, elements } from "./generator.js";
+import { marks } from "./marks.js";
 import { loadPage as loadHomePage } from "./pages/home.js";
 import { loadPage as loadResultPage, listOfStatsSubs as listOfResultSubs, clearSub as clearResultSub } from "./pages/result.js";
 import { stats } from "./stats.js";
@@ -47,7 +48,7 @@ function displayContent(state) {
       break;
 
 
-
+    
     default:
       break;
   }
