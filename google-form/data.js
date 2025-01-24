@@ -2,15 +2,14 @@
 export const questionContainer = [
   {
     "tag": "div",
-    "class": "question-container",
+    "class": "question-container container-box",
     "children": [
       {
         "tag": "div",
         "class": "question-selection",
         "children": [
           {
-            "tag": "input",
-            "type": "text",
+            "tag": "textarea",
             "placeholder": "Question"
           },
           {

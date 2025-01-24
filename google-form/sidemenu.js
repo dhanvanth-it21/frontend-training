@@ -3,7 +3,6 @@ import { createElement } from "./generator.js";
 
 import { questionContainerFun } from "./question-container.js";
 // import { listOfDiv } from "./script.js";
-const listOfDiv = document.querySelectorAll(".form-body-container > div")
 const sideMenuElements = [
   {
     tag: "div",
@@ -28,7 +27,6 @@ export const sideMenuInit = () => {
   // event listner for add question button in the sidemenu
   const addQuestion = document.querySelector(".add-question");
   addQuestion.addEventListener("click", () => {
-    console.log(listOfDiv);
     questionContainerFun();
   });
 };
@@ -37,14 +35,10 @@ export const sideMenuInit = () => {
 //achieved by using a click event listner for the div
 
 export function sideMenuEventListener(div) {
-  console.log(`in side the sideMenuEL`)
   div.addEventListener("click", () => {
     //Marking the active div
-    listOfDiv.forEach((div) => {
-      div.classList.remove("active-box");
-    });
+    removeOtherActiveBox();
     div.classList.add("active-box");
-    console.log(`active-box class added to ${div}`)
     //side-menu positioning
     const rect = div.getBoundingClientRect();
     const sideMenu = document.querySelector(".side-menu");
@@ -54,3 +48,11 @@ export function sideMenuEventListener(div) {
     sideMenu.style.display = "flex";
   });
 }
+
+function removeOtherActiveBox() {
+  const listOfDiv = document.querySelectorAll(".form-body-container > div")
+  listOfDiv.forEach((div) => {
+    div.classList.remove("active-box");
+  });
+}
+
