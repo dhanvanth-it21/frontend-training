@@ -127,32 +127,3 @@ export const navBarInit = () => createElement(navBarElements, document.body);
 // here the form heading is created and appended to the body
 export const headingInit = () => createElement(headingElements, document.body);
 
-// here only the forms title is manipulated
-// export function headingFun() {
-//   const formTitle = document.getElementById("form-title");
-//   const underline = document.querySelector(".underline");
-
-//   //underline event listener as block
-//   formTitle.addEventListener("focus", () => {
-//     underline.style.display = "block";
-//     formTitle.select();
-//   });
-
-//   //underline event listener as none
-//   formTitle.addEventListener("blur", () => {
-//     underline.style.display = "none";
-//   });
-
-//   // initial heading of the form will be heading title
-//   const formHeadingTitleInput = document.querySelector(
-//     ".form-heading-title-input"
-//   );
-//   formHeadingTitleInput.value = formTitle.value;
-
-//   //EL for the heading of the form for missing heading
-//   formHeadingTitleInput.addEventListener("blur", () => {
-//     if (formHeadingTitleInput.value === "") {
-//       formHeadingTitleInput.value = formTitle.value;
-//     }
-//   });
-// }

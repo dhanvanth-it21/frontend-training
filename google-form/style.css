@@ -150,7 +150,9 @@ nav {
 
 }
 
-.add-question {
+.add-question,
+.delete-question {
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +180,7 @@ nav {
   align-items: center;
   flex: 1;
   gap: 1rem;
+  margin-bottom: 20px;
 }
 
 .form-heading {
@@ -203,9 +206,12 @@ nav {
   width: 100%;
 }
 
-.form-heading:focus-within input {
+
+.active-box input {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
+
+
 
 .form-heading input:focus {
   width: 100%;
@@ -356,16 +362,23 @@ nav {
   gap: 0.5rem;
   border-radius: 4px;
   padding-bottom: 2rem;
-  width: 100%;
+  width: 80%;
 }
 
 .markdown-option input {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 80%;
+}
+
+.markdown-option-close {
+  display: none;
+}
+
+.active-box .markdown-option-close {
+  display: block;
 }
 
 .markdown-option input:focus {
-  width: 100%;
+  width: 80%;
   border-bottom: 3px solid #A94A4A;
 }
 

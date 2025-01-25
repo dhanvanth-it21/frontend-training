@@ -56,6 +56,9 @@ function addingStyle(element, tag) {
 export function createElement(elements, appendElement) {
   const arr = createHtmlPage(elements);
 
+  if(appendElement === null) {
+    return arr;
+  }
   arr.forEach((ele) => {
     appendElement.appendChild(ele);
   });
