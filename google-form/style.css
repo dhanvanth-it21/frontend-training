@@ -27,7 +27,7 @@ li {
 /* ---------------------------------------------------------------------------------------------------------------------- */
 
 nav {
-  background-color: #fff;
+  background-color: #FFF6DA;
   display: block;
 }
 
@@ -106,7 +106,8 @@ nav {
 }
 
 /* --------------------------------------------------------------------------------------------------------------- */
-.nav-from-account-details .publish {
+.nav-from-account-details .publish,
+.nav-from-account-details .discard {
   color: #ffffff;
   background-color: #A94A4A;
   padding: 0 24px;
@@ -119,17 +120,24 @@ nav {
   transition: all 0.3s;
 }
 
-.nav-from-account-details .publish:hover {
+.nav-from-account-details .publish:hover,
+.nav-from-account-details .discard:hover {
   background-color: #F4D793;
   color: #000;
   transition: all 0.2s;
 }
 
-.nav-from-account-details .publish:active {
+.nav-from-account-details .publish:active,
+.nav-from-account-details .discard:active {
   background-color: #A94A4A;
   transition: all 0.2s;
 }
 
+.error {
+  color: red;
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+}
 
 /* --------------------------------------------------------------------------------------------------------------- */
 .side-menu {
@@ -147,8 +155,9 @@ nav {
   transition: all 0.3s;
   border: 2px solid #A94A4A;
   display: none;
-
 }
+
+
 
 .add-question,
 .delete-question {
@@ -163,13 +172,16 @@ nav {
   cursor: pointer;
 }
 
-.add-question:hover {
+.add-question:hover,
+.delete-question:hover {
   background-color: #848484;
 }
 
-.add-question:active {
+.add-question:active,
+.delete-question:active {
   background-color: #b6b6b6;
 }
+
 
 /* --------------------------------------------------------------------------------------------------------------- */
 .form-body-container {

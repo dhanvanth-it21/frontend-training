@@ -1,5 +1,5 @@
-import { sideMenuEventListener, sideMenuInit } from "./sidemenu.js";
-import { headingInit, navBarInit } from "./header.js"
+import { sideMenuEventListener, sideMenuInit } from "./create-survey/sidemenu.js";
+import { headingInit, navBarInit, completeValidation } from "./create-survey/header.js"
 
 
 
@@ -10,11 +10,13 @@ window.addEventListener('load', () => {
   headingInit(); //form heading creation
   sideMenuInit(); // side menu creation
   sideMenuEventListener(document.querySelector(".form-body-container > div"));// adding event listener to the heading container
+  // validation part for qeustion container and the form heading
+  const publish = document.querySelector(".publish");
+  publish.addEventListener("click", () => {
+      completeValidation();
+  })
 })
 
 
-
-
-//--------------------------------------------- side menu and the active div ---------------------------------------------------
 
 

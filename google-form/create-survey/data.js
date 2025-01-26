@@ -148,6 +148,158 @@ export const questionTypeOptionList = [
 ];
 
 
+//side menu elements
+export const sideMenuElements = [
+  {
+    tag: "div",
+    class: "side-menu",
+    children: [
+      {
+        tag: "div",
+        class: "add-question",
+        children: [
+          {
+            tag: "i",
+            class: "fa-solid fa-plus",
+          },
+        ],
+      },
+      {
+        tag: "div",
+        class: "delete-question",
+        children: [
+          {
+            tag: "i",
+            class: "fa-solid fa-trash",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+
+//nav bar elements
+export const navBarElements = [
+  {
+    tag: "nav",
+    children: [
+      {
+        tag: "div",
+        class: "nav-container",
+        children: [
+          {
+            tag: "div",
+            class: "nav-form-info",
+            children: [
+              {
+                tag: "div",
+                class: "nav-logo",
+                children: [
+                  {
+                    tag: "i",
+                    class: "fa-solid fa-clipboard-list",
+                  },
+                ],
+              },
+              {
+                tag: "div",
+                class: "nav-title",
+                children: [
+                  {
+                    tag: "h1",
+                    text: "Survey Time",
+                  },
+                  {
+                    tag: "div",
+                    class: "underline",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            tag: "div",
+            class: "nav-form-account",
+            children: [
+              {
+                tag: "div",
+                class: "nav-from-account-details",
+                children: [
+                  {
+                    tag: "button",
+                    class: "publish",
+                    text: "Create",
+                  },
+                  {
+                    tag: "button",
+                    class: "discard",
+                    text: "Discard",
+                  },
+                  {
+                    tag: "div",
+                    class: "nav-form-settings",
+                    children: [
+                      {
+                        tag: "i",
+                        class: "fa-solid fa-ellipsis-vertical",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+//heading of the form elements
+export const headingElements = [
+  {
+    tag: "div",
+    class: "form-body-container",
+    children: [
+      {
+        tag: "div",
+        class: "form-heading container-box",
+        children: [
+          {
+            tag: "div",
+            class: "form-heading-title-div",
+            children: [
+              {
+                tag: "input",
+                class: "form-heading-title-input",
+                attributes: {
+                  placeholder: "Survey Title",
+                  type: "text",
+                },
+              },
+            ],
+          },
+          {
+            tag: "div",
+            class: "form-heading-discription-div",
+            children: [
+              {
+                tag: "input",
+                class: "form-heading-discription-input",
+                attributes: {
+                  type: "text",
+                  placeholder: "Form description (optional)",
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
 
 
 // -------------------------------------------Question Types and its option--------------------------------------------
