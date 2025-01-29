@@ -1,4 +1,6 @@
-const eg = {
+import { createElement } from "../generator.js";
+
+const survey = {
   title: "Survey1",
   description: "Welcome",
   questions: [
@@ -49,6 +51,7 @@ const eg = {
     tag: "div",
     class: "form-body-container",
     children: [
+      //form heading
       {
         tag: "div",
         class: "form-heading container-box",
@@ -75,6 +78,7 @@ const eg = {
           },
         ],
       },
+      // radio
       {
         tag: "div",
         class: "question-container container-box",
@@ -146,6 +150,7 @@ const eg = {
           },
         ],
       },
+      //checkbox
       {
         tag: "div",
         class: "question-container container-box",
@@ -217,6 +222,7 @@ const eg = {
           },
         ],
       },
+      //drop down
       {
         tag: "div",
         class: "question-container container-box",
@@ -264,6 +270,7 @@ const eg = {
           },
         ],
       },
+      //teaxtarea
       {
         tag: "div",
         class: "question-container container-box",
@@ -288,6 +295,7 @@ const eg = {
           },
         ],
       },
+      //date
       {
         tag: "div",
         class: "question-container container-box",
@@ -313,6 +321,7 @@ const eg = {
           },
         ],
       },
+      //time
       {
         tag: "div",
         class: "question-container container-box",
@@ -342,6 +351,136 @@ const eg = {
   },
 ];
 
-document.querySelector(".form-heading-title-div h1").textContent = eg.title;
+document.querySelector(".form-heading-title-div h1").textContent = survey.title;
 document.querySelector(".form-heading-discription-div p").textContent =
-  eg.description;
+  survey.description;
+
+function formHeading() {
+  //form heading
+  const element = {
+    tag: "div",
+    class: "form-heading container-box",
+    children: [
+      {
+        tag: "div",
+        class: "form-heading-title-div",
+        children: [
+          {
+            tag: "h1",
+            text: survey.title,
+          },
+        ],
+      },
+      {
+        tag: "div",
+        class: "form-heading-discription-div",
+        children: [
+          {
+            tag: "p",
+            text: survey.description,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+const mdo = {
+  question: "question1",
+  type: "radio",
+  options: {
+    0: "option1",
+    1: "option2",
+    2: "option3",
+  },
+}
+function markDownOption(mdo) {
+  //radio
+  const element = {
+    tag: "div",
+    class: "question-container container-box",
+    children: [
+      {
+        tag: "div",
+        class: "question-item",
+        children: [
+          {
+            tag: "h2",
+            class: "question-title",
+            text: mdo.question,
+          },
+          {
+            tag: "div",
+            class: "question-options",
+            children: [
+              {
+                tag: "label",
+                children: [
+                  {
+                    tag: "input",
+                    attributes: {
+                      type: "radio",
+                      name: "question1",
+                      value: "option1",
+                    },
+                  },
+                  {
+                    text: "Option 1",
+                  },
+                ],
+              },
+              {
+                tag: "label",
+                children: [
+                  {
+                    tag: "input",
+                    attributes: {
+                      type: "radio",
+                      name: "question1",
+                      value: "option2",
+                    },
+                  },
+                  {
+                    text: "Option 2",
+                  },
+                ],
+              },
+              {
+                tag: "label",
+                children: [
+                  {
+                    tag: "input",
+                    attributes: {
+                      type: "radio",
+                      name: "question1",
+                      value: "option3",
+                    },
+                  },
+                  {
+                    text: "Option 3",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+}
+function markDownCheckbox() {
+  //Checkbox
+  const element = {};
+}
+function markDownSelection() {
+  //Selection
+  const element = {};
+}
+function date() {
+  //date
+  const element = {};
+}
+function time() {
+  //time
+  const element = {};
+}

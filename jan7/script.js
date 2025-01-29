@@ -34,47 +34,47 @@
 // // );
 
 // //---------------------------------------------------------------------------
-// // most common algorithm is "Mark-and-Sweep".
+// most common algorithm is "Mark-and-Sweep".
 
-// const registry = new FinalizationRegistry((data) => {
-//     console.log( `The object ${data} has been garbage collected`);
-// })
+const registry = new FinalizationRegistry((data) => {
+    console.log( `The object ${data} has been garbage collected`);
+})
 
-// function giveObject() {
-//   const obj = {
-//     name: "Dhanvanth",
-//   };
-//   registry.register(obj, obj.name);
-//   return obj;
-// }
+function giveObject() {
+  const obj = {
+    name: "Dhanvanth",
+  };
+  registry.register(obj, obj.name);
+  return obj;
+}
 
-// giveObject();
+giveObject();
 
-// // Ways of GC finding unreferenced object //
+// Ways of GC finding unreferenced object //
 
-// //Reference-counting garbage collection :
+//Reference-counting garbage collection :
 
-// // number of refereces to the Object, when it reaches zero , GC will come in action
-// //     limitation : circular reference
+// number of refereces to the Object, when it reaches zero , GC will come in action
+//     limitation : circular reference
 
-// // eg :
+// eg :
 
-// function giveCircularRefObj() {
-//   const obj1 = {};
-//   const obj2 = {};
+function giveCircularRefObj() {
+  const obj1 = {};
+  const obj2 = {};
 
-//   obj1.ref = obj2;
-//   obj2.ref = obj1;
+  obj1.ref = obj2;
+  obj2.ref = obj1;
 
-//   registry.register(obj1,"obj1");
-//   registry.register(obj2,"obj2");
-// }
+  registry.register(obj1,"obj1");
+  registry.register(obj2,"obj2");
+}
 
-// giveCircularRefObj();
-// console.log("GC will work at any time");
+giveCircularRefObj();
+console.log("GC will work at any time");
 
-// // limitations : of GC :
-// //      can't explicitly call GC
+// limitations : of GC :
+//      can't explicitly call GC
 
 
 
@@ -110,23 +110,23 @@
 // console.log(num5)
 
 // const arr = [];
-const map = new Map();
-const numMap = new Map();
+// const map = new Map();
+// const numMap = new Map();
 
-for(let i  = 0; i < 1000000; i++) {
-  const num = Math.random();
-  const len = num.toString().length - 2;
-  map.set(len, (map.get(len) || 0) + 1);
-  if(len >= 20 || len <= 12 ){
-    const nums = numMap.get(len) || [];
-    nums.push(num);
-    numMap.set(len, nums);
-  }
-}
+// for(let i  = 0; i < 1000000; i++) {
+//   const num = Math.random();
+//   const len = num.toString().length - 2;
+//   map.set(len, (map.get(len) || 0) + 1);
+//   if(len >= 20 || len <= 12 ){
+//     const nums = numMap.get(len) || [];
+//     nums.push(num);
+//     numMap.set(len, nums);
+//   }
+// }
 
 // console.log(arr.sort());
-console.log(map);
-console.log(numMap);
+// console.log(map);
+// console.log(numMap);
 
 // const setVar = new Set();
 
