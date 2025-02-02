@@ -106,8 +106,9 @@ nav {
 }
 
 /* --------------------------------------------------------------------------------------------------------------- */
-.nav-from-account-details .publish,
-.nav-from-account-details .discard {
+.nav-from-account-details .create,
+.nav-from-account-details .discard,
+.nav-from-account-details .top-validate {
   color: #ffffff;
   background-color: #A94A4A;
   padding: 0 24px;
@@ -120,15 +121,17 @@ nav {
   transition: all 0.3s;
 }
 
-.nav-from-account-details .publish:hover,
-.nav-from-account-details .discard:hover {
+.nav-from-account-details .create:hover,
+.nav-from-account-details .discard:hover,
+.nav-from-account-details .top-validate:hover {
   background-color: #F4D793;
   color: #000;
   transition: all 0.2s;
 }
 
-.nav-from-account-details .publish:active,
-.nav-from-account-details .discard:active {
+.nav-from-account-details .create:active,
+.nav-from-account-details .discard:active,
+.nav-from-account-details .top-validate:active {
   background-color: #A94A4A;
   transition: all 0.2s;
 }
@@ -358,11 +361,52 @@ nav {
 
 .question-selected-type-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
+.question-selected-type-container>* {
+  flex-grow: 3;
+}
+
+.question-selected-type-container .question-constrains {
+  flex-grow: 1;
+  align-items: start;
+}
+
+.question-constrains {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.question-container-footer {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  align-items: center;
+}
+
+button.validate {
+  color: #fff;
+  background-color: #A94A4A;
+  padding: 0.5rem 0.3rem;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+button.validate:hover {
+  background-color: #e46161;
+
+}
+
+button.validate:active {
+  background-color: #A94A4A;
+
+}
 /* //--------------------------------------------------------------------------------------- */
 
 .markdown-container {
@@ -437,3 +481,40 @@ nav {
   font-size: 1rem;
   cursor: pointer;
 }
+
+
+
+
+/* constrains 
+ */
+
+.min-length,
+.max-length {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.min-length input,
+.max-length input,
+.min-selection input,
+.max-selection input {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 60px;
+  text-align: center;
+}
+
+.start-date input,
+.end-date input {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+
+
+
+

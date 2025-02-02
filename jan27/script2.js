@@ -1,3 +1,5 @@
+
+
 const http = require("http");
 const v8 = require("v8");
 
@@ -13,7 +15,7 @@ let detectHeapOverflow = (initialStats) => {
 
   let checkHeapUsage = () => {
     let stats = v8.getHeapStatistics();
-    console.log("total_heap_size: " + stats.total_heap_size);
+    console.log("total_heap_size: " + (stats.total_heap_size/1000000));
 
     if (stats.total_heap_size > totalHeapSizeThreshold) {
       console.log("Heap limit exceeded. Displaying error page...");

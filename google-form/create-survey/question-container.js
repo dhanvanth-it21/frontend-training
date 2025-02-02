@@ -14,6 +14,7 @@ import {
   questionContainer,
 } from "./data.js";
 import { sideMenuEventListener } from "./sidemenu.js";
+import { singleQCValidation } from "./validator.js";
 
 // creating the question container which is triggered by add-question by the side menu
 export function questionContainerFun() {
@@ -30,6 +31,8 @@ export function questionContainerFun() {
   div[0].classList.add("active-box");
   sideMenuEventListener(div[0]);
   questionTypeOptionFun(div[0]);
+  //adding validation to this question container as a event listner to validate button
+  div[0].addEventListener('click', () => singleQCValidation(div[0]))
 }
 
 // deleting the question container which is triggered by delete-question by the side menu

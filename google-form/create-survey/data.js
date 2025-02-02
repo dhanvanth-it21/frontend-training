@@ -1,51 +1,69 @@
 //question container includes input for question and dropdown for container for list of types
 export const questionContainer = [
   {
-    "tag": "div",
-    "class": "question-container container-box",
-    "children": [
+    tag: "div",
+    class: "question-container container-box",
+    children: [
       {
-        "tag": "div",
-        "class": "question-selection",
-        "children": [
+        tag: "div",
+        class: "question-selection",
+        children: [
           {
-            "tag": "textarea",
-            "placeholder": "Question"
+            tag: "textarea",
+            placeholder: "Question",
           },
           {
-            "tag": "div",
-            "class": "question-type-selection-container",
-            "children": [
+            tag: "div",
+            class: "question-type-selection-container",
+            children: [
               {
-                "tag": "div",
-                "class": "select-btn",
-                "children": [
+                tag: "div",
+                class: "select-btn",
+                children: [
                   {
-                    "tag": "div",
-                    "class": "question-type"
+                    tag: "div",
+                    class: "question-type",
                   },
                   {
-                    "tag": "i",
-                    "class": "fa-solid fa-caret-down"
-                  }
-                ]
-              }
-            ]
-          }
+                    tag: "i",
+                    class: "fa-solid fa-caret-down",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        tag: "div",
+        class: "question-separator",
+      },
+      {
+        tag: "div",
+        class: "question-selected-type-container",
+      },
+      {
+        tag: "div",
+        class: "question-separator",
+        attributes: {
+          style: "border-top:1px solid rgba(0,0,0,0.1);"
+        }
+      },
+      {
+        tag: "div",
+        class: "question-container-footer",
+        children: [
+          {
+            tag: "button",
+            class: "validate",
+            text: "Validate",
+          },
+          required(),
         ]
       },
-      {
-        "tag": "div",
-        "class": "question-separator"
-      },
-      {
-        "tag": "div",
-        "class": "question-selected-type-container"
-      }
-    ]
-  }
-  
-]
+    ],
+  },
+];
 
 // it includes list of types of question for the container in question container
 export const questionTypeOptionList = [
@@ -147,7 +165,6 @@ export const questionTypeOptionList = [
   },
 ];
 
-
 //side menu elements
 export const sideMenuElements = [
   {
@@ -177,7 +194,6 @@ export const sideMenuElements = [
     ],
   },
 ];
-
 
 //nav bar elements
 export const navBarElements = [
@@ -228,7 +244,12 @@ export const navBarElements = [
                 children: [
                   {
                     tag: "button",
-                    class: "publish",
+                    class: "top-validate",
+                    text: "Validate",
+                  },
+                  {
+                    tag: "button",
+                    class: "create",
                     text: "Create",
                   },
                   {
@@ -300,7 +321,231 @@ export const headingElements = [
   },
 ];
 
+//-------------------------------------------constrains maker functions return json-----------------------------------
+//main constrain creater
+function constrains(...args) {
+  return {
+    tag: "div",
+    class: "question-constrains",
+    children: [
+      ...args.map(a => a())
+    ],
+  };
+}
 
+// required type for each question
+function required() {
+  return {
+    tag: "div",
+    class: "required",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "checkbox",
+          },
+          {
+            text: " Required",
+          },
+        ],
+      },
+    ],
+  }
+}
+
+// text min character
+function minLength() {
+  return {
+    tag: "div",
+    class: "min-length",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 0,
+              value: 0,
+            },
+          },
+          {
+            text: " Min Character",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// text max character
+function maxLength() {
+  return {
+    tag: "div",
+    class: "max-length",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 0,
+              value: 100,
+            },
+          },
+          {
+            text: " Max Character",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// checkbox min selection
+function minSelection() {
+  return {
+    tag: "div",
+    class: "min-selection",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 1,
+              value: 1,
+            },
+          },
+          {
+            text: " Min Selection",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// checkbox max selection
+function maxSelection() {
+  return {
+    tag: "div",
+    class: "max-selection",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 1,
+              value: 1,
+            },
+          },
+          {
+            text: " Max Selection",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// start date
+function startDate() {
+  return {
+    tag: "div",
+    class: "start-date",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "date",
+          },
+          {
+            text: " Start Date",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// end date
+function endDate() {
+  return {
+    tag: "div",
+    class: "end-date",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "date",
+          },
+          {
+            text: " End Date",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// start time
+function startTime() {
+  return {
+    tag: "div",
+    class: "start-time",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "time",
+          },
+          {
+            text: " Start Time",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// end time
+function endTime() {
+  return {
+    tag: "div",
+    class: "end-time",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "time",
+          },
+          {
+            text: " End Time",
+          },
+        ],
+      },
+    ],
+  };
+}
 
 // -------------------------------------------Question Types and its option--------------------------------------------
 //radio
@@ -346,6 +591,7 @@ export const markdown = [
       },
     ],
   },
+  constrains(),
 ];
 export const markdownOption = [
   {
@@ -375,7 +621,6 @@ export const markdownOption = [
   },
 ];
 //------------------
-
 
 //checkbox
 export const markdownCheckbox = [
@@ -420,6 +665,7 @@ export const markdownCheckbox = [
       },
     ],
   },
+  constrains(minSelection, maxSelection),
 ];
 export const markdownCheckboxOption = [
   {
@@ -449,7 +695,6 @@ export const markdownCheckboxOption = [
   },
 ];
 //---------------------
-
 
 //dropdown
 export const markdownDropdown = [
@@ -494,6 +739,7 @@ export const markdownDropdown = [
       },
     ],
   },
+  constrains(),
 ];
 export const markdownDropdownOption = [
   {
@@ -522,7 +768,7 @@ export const markdownDropdownOption = [
     ],
   },
 ];
-
+//------------------
 
 //paragraph
 export const paragraph = [
@@ -538,9 +784,9 @@ export const paragraph = [
       },
     ],
   },
+  constrains(minLength, maxLength),
 ];
 //------------------
-
 
 //time
 export const timeType = [
@@ -552,12 +798,13 @@ export const timeType = [
         tag: "input",
         type: "time",
         class: "time-type",
+        disabled: true,
       },
     ],
   },
+  constrains(startTime, endTime),
 ];
 //----------------
-
 
 //data
 export const dateType = [
@@ -569,10 +816,10 @@ export const dateType = [
         tag: "input",
         type: "date",
         class: "date-type",
-    },
-],
-},
+        disabled: true,
+      },
+    ],
+  },
+  constrains(startDate, endDate),
 ];
-
-
-
+//------------------
