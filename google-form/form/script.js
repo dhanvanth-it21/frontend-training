@@ -61,6 +61,21 @@ const survey = {
       startTime: "07:14",
       endTime: "17:14"
     },
+    {
+      questionId: 7,
+      question: "question 7",
+      type: "file",
+      required: false,
+      accept: ".jpeg, "
+    },
+    {
+      questionId: 8,
+      question: "question 8",
+      type: "number",
+      required: false,
+      minValue: "1",
+      maxValue: "10"
+    },
   ],
 };
 
@@ -94,6 +109,8 @@ function userJsonConverter(survey) {
               return time(question);
             case "text":
               return text(question);
+            case "number":
+              return numberType(question);
           }
         }),
       ],
@@ -271,6 +288,23 @@ function text(textQuestion) {
   });
   return element;
 }
+
+// number question json converter
+// function numberType(numberQuestion) {
+//   //time
+//   const element = questionContainer(numberQuestion);
+//   element.children[0].children.push({
+//     tag: "input",
+//     attributes: {
+//       type: "number",
+//       name: `${textQuestion.questionId}`,
+//       class: "text-input",
+//       minlength: textQuestion.minLength,
+//       maxLength: textQuestion.maxLength,
+//     },
+//   });
+//   return element;
+// }
 
 
 

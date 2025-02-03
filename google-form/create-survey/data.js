@@ -37,6 +37,9 @@ export const questionContainer = [
       {
         tag: "div",
         class: "question-separator",
+        attributes: {
+          style: "border-top:1px solid rgba(0,0,0,0.1); margin-top: 20px",
+        },
       },
       {
         tag: "div",
@@ -46,8 +49,8 @@ export const questionContainer = [
         tag: "div",
         class: "question-separator",
         attributes: {
-          style: "border-top:1px solid rgba(0,0,0,0.1);"
-        }
+          style: "border-top:1px solid rgba(0,0,0,0.1);",
+        },
       },
       {
         tag: "div",
@@ -59,7 +62,7 @@ export const questionContainer = [
             text: "Validate",
           },
           required(),
-        ]
+        ],
       },
     ],
   },
@@ -75,6 +78,7 @@ export const questionTypeOptionList = [
         tag: "ul",
         class: "options",
         children: [
+          // Multiple Choice
           {
             tag: "li",
             class: "option",
@@ -89,20 +93,7 @@ export const questionTypeOptionList = [
               },
             ],
           },
-          {
-            tag: "li",
-            class: "option",
-            children: [
-              {
-                tag: "i",
-                class: "fa-regular fa-file-lines",
-              },
-              {
-                tag: "span",
-                text: "Paragraph",
-              },
-            ],
-          },
+          //Check Box
           {
             tag: "li",
             class: "option",
@@ -117,6 +108,7 @@ export const questionTypeOptionList = [
               },
             ],
           },
+          //Drop Dowm
           {
             tag: "li",
             class: "option",
@@ -131,6 +123,37 @@ export const questionTypeOptionList = [
               },
             ],
           },
+          // Paragraph
+          {
+            tag: "li",
+            class: "option",
+            children: [
+              {
+                tag: "i",
+                class: "fa-regular fa-file-lines",
+              },
+              {
+                tag: "span",
+                text: "Paragraph",
+              },
+            ],
+          },
+          // Number
+          {
+            tag: "li",
+            class: "option",
+            children: [
+              {
+                tag: "i",
+                class: "fa-solid fa-hashtag",
+              },
+              {
+                tag: "span",
+                text: "Number",
+              },
+            ],
+          },
+          // Date
           {
             tag: "li",
             class: "option",
@@ -145,6 +168,7 @@ export const questionTypeOptionList = [
               },
             ],
           },
+          //Time
           {
             tag: "li",
             class: "option",
@@ -156,6 +180,21 @@ export const questionTypeOptionList = [
               {
                 tag: "span",
                 text: "Time",
+              },
+            ],
+          },
+          //Upload Image
+          {
+            tag: "li",
+            class: "option",
+            children: [
+              {
+                tag: "i",
+                class: "fa-regular fa-image",
+              },
+              {
+                tag: "span",
+                text: "Upload Image",
               },
             ],
           },
@@ -310,7 +349,7 @@ export const headingElements = [
                 class: "form-heading-discription-input",
                 attributes: {
                   type: "text",
-                  placeholder: "Form description (optional)",
+                  placeholder: "Survey description (optional)",
                 },
               },
             ],
@@ -327,9 +366,7 @@ function constrains(...args) {
   return {
     tag: "div",
     class: "question-constrains",
-    children: [
-      ...args.map(a => a())
-    ],
+    children: [...args.map((a) => a())],
   };
 }
 
@@ -352,7 +389,7 @@ function required() {
         ],
       },
     ],
-  }
+  };
 }
 
 // text min character
@@ -459,6 +496,58 @@ function maxSelection() {
   };
 }
 
+// number min value
+function minValue() {
+  return {
+    tag: "div",
+    class: "min-value",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 0,
+              // value: 0,
+            },
+          },
+          {
+            text: " Min Value",
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// number max value
+function maxValue() {
+  return {
+    tag: "div",
+    class: "max-value",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 0,
+              // value: 100,
+            },
+          },
+          {
+            text: " Max Value",
+          },
+        ],
+      },
+    ],
+  };
+}
+
 // start date
 function startDate() {
   return {
@@ -544,6 +633,39 @@ function endTime() {
         ],
       },
     ],
+  };
+}
+
+// this has a arr of image extension and returns them by json format
+function imageTypeSelectionhelper() {
+  const arr = ["jpeg", "png", "gif", "tiff", "svg", "webp"];
+  const returnArr = [];
+  arr.forEach((ext) => {
+    returnArr.push({
+      tag: "label",
+      children: [
+        {
+          tag: "input",
+          type: "checkbox",
+          attributes: {
+            value: `.${ext}`,
+          },
+        },
+        {
+          text: ` ${ext.toUpperCase()}`,
+        },
+      ],
+    });
+  });
+  return returnArr;
+}
+
+// file image type selection
+function imageTypeSelection() {
+  return {
+    tag: "div",
+    class: "image-type-selection",
+    children: [...imageTypeSelectionhelper()],
   };
 }
 
@@ -821,5 +943,42 @@ export const dateType = [
     ],
   },
   constrains(startDate, endDate),
+];
+//------------------
+
+// Number
+export const numberRange = [
+  {
+    tag: "div",
+    class: "number-range-type-container",
+    children: [
+      {
+        tag: "input",
+        type: "number",
+        class: "number-range-type",
+        disabled: true,
+        placeholder: "number as input",
+      },
+    ],
+  },
+  constrains(minValue, maxValue),
+];
+//------------------
+
+//image
+export const fileImage = [
+  {
+    tag: "div",
+    class: "file-image-type-container",
+    children: [
+      {
+        tag: "input",
+        type: "file",
+        class: "file-image-type",
+        disabled: true,
+      },
+    ],
+  },
+  constrains(imageTypeSelection),
 ];
 //------------------

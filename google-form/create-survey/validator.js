@@ -36,32 +36,35 @@ function titleValidationMessage(value) {
 }
 
 //------------------------------------------------- question container validation-------------------------------
+//  specific question container validation
 function questionContainerValidation(qc) {
-    let isCorrect = true;
-    // validation for question
-    const question = qc.querySelector(".question-selection>textarea");
-    const questionErrorMessage = questionValidationMessage(question.value);
-    if (questionErrorMessage) {
-      qc.querySelector(".question-selection").insertAdjacentElement(
-        "afterend",
-        errorText(questionErrorMessage)
-      );
-    }
-    // validation for the question type
-    const questionTypeErrorMessage = questionTypeValidationMessage(
-      qc.querySelector(".question-selected-type-container")
+  let isCorrect = true;
+  // validation for question
+  const question = qc.querySelector(".question-selection>textarea");
+  const questionErrorMessage = questionValidationMessage(question.value);
+  if (questionErrorMessage) {
+    qc.querySelector(".question-selection").insertAdjacentElement(
+      "afterend",
+      errorText(questionErrorMessage)
     );
-    if (questionTypeErrorMessage) {
-      qc.querySelector(
-        ".question-selected-type-container"
-      ).insertAdjacentElement("afterend", errorText(questionTypeErrorMessage));
-    }
-    if (isCorrect && (questionErrorMessage || questionTypeErrorMessage)) {
-      isCorrect = false;
-    }
-    return isCorrect;
+  }
+  // validation for the question type
+  const questionTypeErrorMessage = questionTypeValidationMessage(
+    qc.querySelector(".question-selected-type-container")
+  );
+  if (questionTypeErrorMessage) {
+    qc.querySelector(".question-selected-type-container").insertAdjacentElement(
+      "afterend",
+      errorText(questionTypeErrorMessage)
+    );
+  }
+  if (isCorrect && (questionErrorMessage || questionTypeErrorMessage)) {
+    isCorrect = false;
+  }
+  return isCorrect;
 }
 
+//  all question container validaiton using foreach loop which calls questionContainerValidation(qc);
 function questionContainersValidation() {
   const questionContainers = document.querySelectorAll(".question-container");
 
@@ -103,14 +106,14 @@ function questionTypeValidationMessage(questionTypeContainer) {
     const markdownOptions = qtc.querySelectorAll(".markdown-option");
 
     // -----------------------this is for the checkbox----------start
-    const minInput = questionTypeContainer.querySelector(
+    const minSelection = questionTypeContainer.querySelector(
       ".question-constrains > div.min-selection > label > input"
     );
-    const maxInput = questionTypeContainer.querySelector(
+    const maxSelection = questionTypeContainer.querySelector(
       ".question-constrains > div.max-selection > label > input"
     );
-    let min = minInput ? minInput.value : null;
-    let max = maxInput ? maxInput.value : null;
+    let minSelec = minSelection ? minSelection.value : null;
+    let maxSelec = maxSelection ? maxSelection.value : null;
     // -----------------------this is for the checkbox----------end
 
     let errorMessage = null;
@@ -128,14 +131,14 @@ function questionTypeValidationMessage(questionTypeContainer) {
       }
 
       // -----------------------this is for the checkbox----------start
-      else if (min && max) {
-        min = parseInt(min);
-        max = parseInt(max);
-        if (min > max) {
+      else if (minSelec && maxSelec) {
+        minSelec = parseInt(minSelec);
+        maxSelec = parseInt(maxSelec);
+        if (minSelec > maxSelec) {
           errorMessage = "*max character must be greater than min character";
         } else if (
-          markdownOptions.length < min ||
-          markdownOptions.length < max
+          markdownOptions.length < minSelec ||
+          markdownOptions.length < maxSelec
         ) {
           errorMessage =
             "*enter min and max according to the number of options";
@@ -179,13 +182,49 @@ function questionTypeValidationMessage(questionTypeContainer) {
     return errorMessage;
   }
 
+  // this is validation for the number
+  if (questionTypeContainer.querySelector(".number-range-type-container")) {
+    //max number must be greater than min number
+    let errorMessage = null;
+    const minNumber = questionTypeContainer.querySelector(
+      ".question-constrains > div.min-value > label > input"
+    );
+    const maxNumber = questionTypeContainer.querySelector(
+      ".question-constrains > div.max-value > label > input"
+    );
+    let minNum = minNumber ? minNumber.value : null;
+    let maxNum = maxNumber ? maxNumber.value : null;
+    minNum = parseInt(minNum);
+    maxNum = parseInt(maxNum);
+    if (minNum > maxNum) {
+      errorMessage = "*max number must be greater than min number";
+    }
+    return errorMessage;
+  }
+
+  // this is validation for the file acepting only image
+  if (questionTypeContainer.querySelector(".file-image-type-container")) {
+    //max number must be greater than min number
+    let errorMessage = null;
+    const checkedTpyes = Array.from(
+      questionTypeContainer.querySelectorAll(
+        "div.question-constrains > div.image-type-selection > label > input"
+      )
+    ).filter((ext) => ext.checked === true);
+
+    if (checkedTpyes.length === 0) {
+      errorMessage = "*Select at least 1 image extension";
+    }
+    return errorMessage;
+  }
+
   //other type validation need to be done
 }
 
 //-----------------------------------------------------------------------------------------------------------
 // Remove  previous error messages with the provided place
 function removeError(place = document) {
-    const previousError = place.querySelectorAll(".error");
+  const previousError = place.querySelectorAll(".error");
   previousError.forEach((error) => {
     error.remove();
   });
@@ -206,6 +245,6 @@ export function completeValidation() {
 
 // specfic question container validation --> single-question-container-validation
 export function singleQCValidation(qc) {
-    removeError(qc);
-    return questionContainerValidation(qc);
+  removeError(qc);
+  return questionContainerValidation(qc);
 }

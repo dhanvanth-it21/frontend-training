@@ -12,6 +12,8 @@ import {
   dateType,
   questionTypeOptionList,
   questionContainer,
+  numberRange,
+  fileImage,
 } from "./data.js";
 import { sideMenuEventListener } from "./sidemenu.js";
 import { singleQCValidation } from "./validator.js";
@@ -32,7 +34,7 @@ export function questionContainerFun() {
   sideMenuEventListener(div[0]);
   questionTypeOptionFun(div[0]);
   //adding validation to this question container as a event listner to validate button
-  div[0].addEventListener('click', () => singleQCValidation(div[0]))
+  div[0].querySelector(".validate").addEventListener('click', () => singleQCValidation(div[0]))
 }
 
 // deleting the question container which is triggered by delete-question by the side menu
@@ -126,6 +128,10 @@ function selectedQuestionType(qtype, div) {
     createTime(div);
   } else if (qtype === "Date") {
     createDate(div);
+  } else if (qtype === "Number") {
+    createNumber(div);
+  } else if (qtype === "Upload Image") {
+    createFileImage(div);
   }
 }
 
@@ -235,4 +241,22 @@ function createDate(div) {
   );
 
   createElement(dateType, questionSelectedTypeContainer);
+}
+
+//--------- Number --------------------------
+function createNumber(div) {
+  const questionSelectedTypeContainer = div.querySelector(
+    ".question-selected-type-container"
+  );
+
+  createElement(numberRange, questionSelectedTypeContainer);
+}
+
+//--------- File Image (Upload Image)--------------------------
+function createFileImage(div) {
+  const questionSelectedTypeContainer = div.querySelector(
+    ".question-selected-type-container"
+  );
+
+  createElement(fileImage, questionSelectedTypeContainer);
 }

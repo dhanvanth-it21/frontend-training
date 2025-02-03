@@ -17,7 +17,7 @@ input {
 }
 
 body {
-  background-color: #FFF6DA;
+  background-color: #fff6da;
 }
 
 li {
@@ -27,7 +27,7 @@ li {
 /* ---------------------------------------------------------------------------------------------------------------------- */
 
 nav {
-  background-color: #FFF6DA;
+  background-color: #fff6da;
   display: block;
 }
 
@@ -58,7 +58,7 @@ nav {
   width: 29px;
   height: 39.9px;
   margin: 0 auto;
-  color: #889E73;
+  color: #889e73;
   font-size: 2rem;
 }
 
@@ -76,7 +76,6 @@ nav {
   width: 100%;
 }
 
-
 .nav-form-account .nav-from-account-details {
   display: flex;
   align-items: center;
@@ -93,7 +92,7 @@ nav {
 }
 
 .nav-form-account .nav-form-settings:active {
-  background-color: #F4D793;
+  background-color: #f4d793;
   border-radius: 50%;
 }
 
@@ -110,7 +109,7 @@ nav {
 .nav-from-account-details .discard,
 .nav-from-account-details .top-validate {
   color: #ffffff;
-  background-color: #A94A4A;
+  background-color: #a94a4a;
   padding: 0 24px;
   font-family: Roboto, Arial, sans-serif;
   font-size: 14px;
@@ -124,7 +123,7 @@ nav {
 .nav-from-account-details .create:hover,
 .nav-from-account-details .discard:hover,
 .nav-from-account-details .top-validate:hover {
-  background-color: #F4D793;
+  background-color: #f4d793;
   color: #000;
   transition: all 0.2s;
 }
@@ -132,7 +131,7 @@ nav {
 .nav-from-account-details .create:active,
 .nav-from-account-details .discard:active,
 .nav-from-account-details .top-validate:active {
-  background-color: #A94A4A;
+  background-color: #a94a4a;
   transition: all 0.2s;
 }
 
@@ -156,11 +155,9 @@ nav {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-  border: 2px solid #A94A4A;
+  border: 2px solid #a94a4a;
   display: none;
 }
-
-
 
 .add-question,
 .delete-question {
@@ -184,7 +181,6 @@ nav {
 .delete-question:active {
   background-color: #b6b6b6;
 }
-
 
 /* --------------------------------------------------------------------------------------------------------------- */
 .form-body-container {
@@ -213,7 +209,7 @@ nav {
 }
 
 .active-box {
-  border: 2px solid #A94A4A;
+  border: 2px solid #a94a4a;
   /* border-bottom: 6px solid #A94A4A; */
 }
 
@@ -221,16 +217,13 @@ nav {
   width: 100%;
 }
 
-
 .active-box input {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-
-
 .form-heading input:focus {
   width: 100%;
-  border-bottom: 3px solid #A94A4A;
+  border-bottom: 3px solid #a94a4a;
 }
 
 .form-heading-title-div,
@@ -350,7 +343,8 @@ nav {
   background-color: #d5d5d5;
 }
 
-.question-type-options, .hidden {
+.question-type-options,
+.hidden {
   display: none;
 }
 
@@ -365,7 +359,7 @@ nav {
   gap: 1rem;
 }
 
-.question-selected-type-container>* {
+.question-selected-type-container > * {
   flex-grow: 3;
 }
 
@@ -391,7 +385,7 @@ nav {
 
 button.validate {
   color: #fff;
-  background-color: #A94A4A;
+  background-color: #a94a4a;
   padding: 0.5rem 0.3rem;
   font-size: 14px;
   border-radius: 4px;
@@ -400,12 +394,28 @@ button.validate {
 
 button.validate:hover {
   background-color: #e46161;
-
 }
 
 button.validate:active {
-  background-color: #A94A4A;
+  background-color: #a94a4a;
+}
 
+.required {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.required input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.required label {
+  cursor: pointer;
 }
 /* //--------------------------------------------------------------------------------------- */
 
@@ -435,7 +445,7 @@ button.validate:active {
 
 .markdown-option input:focus {
   width: 80%;
-  border-bottom: 3px solid #A94A4A;
+  border-bottom: 3px solid #a94a4a;
 }
 
 .markdown-add-option button {
@@ -482,14 +492,41 @@ button.validate:active {
   cursor: pointer;
 }
 
+.number-range-type-container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
+.number-range-type {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.file-image-type-container {
+  padding: 1rem;
+}
+
+.file-image-type {
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
 
 
 /* constrains 
  */
 
 .min-length,
-.max-length {
+.max-length,
+.min-selection,
+.max-selection,
+.min-value,
+.max-value {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -498,7 +535,9 @@ button.validate:active {
 .min-length input,
 .max-length input,
 .min-selection input,
-.max-selection input {
+.max-selection input,
+.min-value input,
+.max-value input {
   border: 1px solid #000;
   border-radius: 4px;
   padding: 0.5rem;
@@ -514,7 +553,24 @@ button.validate:active {
   text-align: center;
 }
 
+/* image type selection css for the upload image section */
+.image-type-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
 
+.image-type-selection label {
+  flex: 1 1 calc(50% - 0.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
 
-
+.image-type-selection input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

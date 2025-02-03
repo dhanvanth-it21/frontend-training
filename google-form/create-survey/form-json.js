@@ -13,6 +13,10 @@ function getType(type) {
       return "time";
     case "Paragraph":
       return "text";
+    case "Number":
+      return "number";
+    case "Upload Image": 
+      return "file"
     default:
       return "text";
   }
@@ -105,6 +109,31 @@ function convert() {
       ).value;
       question.startTime = questionStartTime;
       question.endTime = questionEndTime;
+    }
+
+    // min and max for number
+    if (questionType === "number") {
+      const questionMinVlaue = questionContainer.querySelector(
+        "div.question-constrains > .min-value > label > input"
+      ).value;
+      const questionMaxVlaue = questionContainer.querySelector(
+        "div.question-constrains > .max-value > label > input"
+      ).value;
+      question.minValue = questionMinVlaue;
+      question.maxValue = questionMaxVlaue;
+    }
+
+    // file uploading only image
+    if (questionType === "file" && questionContainer.querySelector("div.question-constrains > div.image-type-selection")) {
+      const checkedTpyes = Array.from(
+        questionContainer.querySelectorAll(
+          "div.question-constrains > div.image-type-selection > label > input"
+        )
+      ).filter((ext) => ext.checked === true);
+      const imageTypes = checkedTpyes.map((ext) => {
+          return ext.value;
+      }).reduce((a, ext) => `${a}${ext}, `, "");
+      question.accept = imageTypes;
     }
 
     // radio, checkbox, dropdown have options, a options obj created and added to the json
