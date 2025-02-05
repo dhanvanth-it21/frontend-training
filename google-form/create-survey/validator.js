@@ -91,9 +91,10 @@ function questionValidationMessage(value) {
     return "*Question must be at least 5 characters";
   } else if (value.length > 2000) {
     return "*Question must be less than 2000 characters";
-  } else if (!/^[a-zA-Z0-9 .,!@#$%^&*()_+=-]*$/.test(value)) {
-    return "*Allowed only commonly used special characters";
-  }
+  } 
+  // else if (!/^[a-zA-Z0-9 .,!@#$%^&*()_+=-]*$/.test(value)) {
+  //   return "*Allowed only commonly used special characters";
+  // }
   return null;
 }
 
@@ -215,6 +216,11 @@ function questionTypeValidationMessage(questionTypeContainer) {
     if (checkedTpyes.length === 0) {
       errorMessage = "*Select at least 1 image extension";
     }
+
+    const imageSize = questionTypeContainer.querySelector("div.question-constrains > div.image-size > label > input");
+    console.log(imageSize.value, typeof(imageSize.value))
+    if(!imageSize.value || imageSize.value === "0") errorMessage = "*Enter the image size";
+    if(parseInt(imageSize.value) >= 25) errorMessage = "*Enter the image size less than 25 MB";
     return errorMessage;
   }
 
@@ -248,3 +254,6 @@ export function singleQCValidation(qc) {
   removeError(qc);
   return questionContainerValidation(qc);
 }
+
+
+ 

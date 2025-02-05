@@ -669,6 +669,32 @@ function imageTypeSelection() {
   };
 }
 
+// file image type size selection
+function imageSize() {
+  return {
+    tag: "div",
+    class: "image-size",
+    children: [
+      {
+        tag: "label",
+        children: [
+          {
+            tag: "input",
+            type: "number",
+            attributes: {
+              min: 0,
+              value: 5,
+            },
+          },
+          {
+            text: " Max Size (MB)",
+          },
+        ],
+      }
+    ]
+  }
+}
+
 // -------------------------------------------Question Types and its option--------------------------------------------
 //radio
 export const markdown = [
@@ -979,6 +1005,9 @@ export const fileImage = [
       },
     ],
   },
-  constrains(imageTypeSelection),
+  constrains(imageTypeSelection,imageSize),
 ];
 //------------------
+
+
+

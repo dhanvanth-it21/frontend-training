@@ -1,310 +1,113 @@
 import { createElement } from "../generator.js";
+import { userJsonConverter } from "./user-json-converter.js";
+
+
 
 const survey = {
-  title: "Survey1",
-  description: "Welcome",
+  title: "Survey Time",
+  description: "a sample to test the user preview",
   questions: [
     {
-      questionId: "1",
-      question: "question1",
+      questionId: 1,
+      question: "Question1 - MC",
       type: "radio",
-      required: true,
+      required: false,
       options: {
-        0: "option1",
-        1: "option2",
-        2: "option3",
+        0: "MC-1.",
+        1: "MC-2.",
+        2: "MC-3.",
       },
     },
     {
-      questionId: "2",
-      question: "question2",
+      questionId: 2,
+      question: "Question1 - CB",
       type: "checkbox",
-      required: true,
+      required: false,
       minSelection: "1",
-      maxSelection: "1",
+      maxSelection: "2",
       options: {
-        0: "option4",
-        1: "option5",
-        2: "option6",
+        0: "CB-1.",
+        1: "CB-2.",
+        2: "CB-3.",
       },
     },
     {
-      questionId: "3",
-      question: "question3",
+      questionId: 3,
+      question: "Question3 - DD",
       type: "select",
+      required: false,
       options: {
-        0: "option7",
-        1: "option8",
-        2: "option9",
+        0: "DD-1.",
+        1: "DD-2.",
+        2: "DD-3.",
       },
     },
     {
-      questionId: "4",
-      question: "question4",
+      questionId: 4,
+      question: "Question4 - para",
       type: "text",
-      required: true,
-      minLength: 10,
-      maxLength: 200,
+      required: false,
+      minLength: "5",
+      maxLength: "10",
     },
     {
-      questionId: "5",
-      question: "question5",
+      questionId: 5,
+      question: "Question5 - Number",
+      type: "number",
+      required: false,
+      minValue: "100",
+      maxValue: "200",
+    },
+    {
+      questionId: 6,
+      question: "Question6 - date",
       type: "date",
-      startDate: "2025-02-18",
-      endDate: "2025-02-26",
-    },
-    {
-      questionId: "6",
-      question: "question6",
-      type: "time",
-      required: true,
-      startTime: "07:14",
-      endTime: "17:14"
+      required: false,
+      startDate: "2025-02-01",
+      endDate: "2025-02-20",
     },
     {
       questionId: 7,
-      question: "question 7",
-      type: "file",
+      question: "Question7 - time",
+      type: "time",
       required: false,
-      accept: ".jpeg, "
+      startTime: "00:00",
+      endTime: "06:00",
     },
     {
       questionId: 8,
-      question: "question 8",
-      type: "number",
+      question: "Question8 - time",
+      type: "file",
       required: false,
-      minValue: "1",
-      maxValue: "10"
+      accept: ".jpeg, .png, ",
     },
   ],
 };
 
 
-usedPage(survey);
-
-//user page
-function usedPage(survey) {
-  createElement(userJsonConverter(survey), document.body);
-}
-
-//creating the html-form-body json for user side
-function userJsonConverter(survey) {
-  const finalJson = [
-    {
-      tag: "div",
-      class: "form-body-container",
-      children: [
-        formHeading(survey.title, survey.description),
-        ...survey.questions.map((question) => {
-          switch (question.type) {
-            case "radio":
-              return markDownOption(question);
-            case "checkbox":
-              return markDownOption(question);
-            case "select":
-              return markDownSelect(question);
-            case "date":
-              return date(question);
-            case "time":
-              return time(question);
-            case "text":
-              return text(question);
-            case "number":
-              return numberType(question);
-          }
-        }),
-      ],
-    },
-  ];
-  console.log(finalJson);
-  return finalJson;
-}
-
-//-----------------------------------------------------------
-// code to convert proper json for each questions and including header
-
-// structure of question container
-function questionContainer(question) {
-  return {
-    tag: "div",
-    class: "question-container container-box",
-    children: [
-      {
-        tag: "div",
-        class: "question-item",
-        children: [
-          {
-            tag: "h2",
-            class: "question-title",
-            text: `${question.questionId}) ${question.question}`,
-            required: `${question.required ? question.required : "false"}`,
-            children: [
-              (function() {
-                if(question.required)
-                return {
-                  tag: "span",
-                  class: "requiredStar",
-                  text: " *",
-                }
-                else return {}
-              })(),
-            ],
-          },
-        ],
-      },
-    ],
-  };
-}
-
-
-//-------------------------------------------------
-
-//header json converter
-function formHeading(title, description) {
-  //form heading
-  const element = {
-    tag: "div",
-    class: "form-heading container-box",
-    children: [
-      {
-        tag: "div",
-        class: "form-heading-title-div",
-        children: [
-          {
-            tag: "h1",
-            text: title,
-          },
-        ],
-      },
-      {
-        tag: "div",
-        class: "form-heading-discription-div",
-        children: [
-          {
-            tag: "p",
-            text: description,
-          },
-        ],
-      },
-    ],
-  };
-  return element;
-}
-
-// radio question json converter
-function markDownOption(mdo) {
-  const childrenArr = Object.keys(mdo.options).map((key) => ({
-    tag: "label",
-    children: [
-      {
-        tag: "input",
-        attributes: {
-          type: mdo.type,
-          name: mdo.question,
-          value: mdo.options[key],
-        },
-      },
-      {
-        text: mdo.options[key],
-      },
-    ],
-  }));
-
-  const element = questionContainer(mdo)
-  element.children[0].children.push({
-    tag: "div",
-    class: "question-options",
-    children: childrenArr,
-  })
-  return element;
-}
-
-// dropdown question json converter
-function markDownSelect(selectQuestion) {
-  const options = Object.keys(selectQuestion.options).map((key) => ({
-    tag: "option",
-    value: selectQuestion.options[key],
-    text: selectQuestion.options[key],
-  }));
-
-  const element = questionContainer(selectQuestion);
-  element.children[0].children.push({
-    tag: "select",
-    attributes: {
-      name: selectQuestion.questionId,
-      class: "dropdown",
-    },
-    children: options,
-  });
-  return element;
-}
-
-//date question json converter
-function date(dateQuestion) {
-  //date
-  const element = questionContainer(dateQuestion);
-  element.children[0].children.push({
-    tag: "input",
-    attributes: {
-      type: "date",
-      name: `${dateQuestion.questionId}`,
-      class: "date-input",
-      min: dateQuestion.startDate,
-      max: dateQuestion.endDate,
-    },
-  });
-  return element;
-}
-
-//time question json converter
-function time(timeQuestion) {
-  //time
-  const element = questionContainer(timeQuestion);
-  element.children[0].children.push({
-    tag: "input",
-    attributes: {
-      type: "time",
-      name: `${timeQuestion.questionId}`,
-      class: "time-input",
-      min: timeQuestion.startTime,
-      max: timeQuestion.endTime,
-    },
-  });
-  return element;
-}
-
-// text question json converter
-function text(textQuestion) {
-  //time
-  const element = questionContainer(textQuestion);
-  element.children[0].children.push({
-    tag: "textarea",
-    attributes: {
-      name: `${textQuestion.questionId}`,
-      class: "text-input",
-      minlength: textQuestion.minLength,
-      maxLength: textQuestion.maxLength,
-    },
-  });
-  return element;
-}
-
-// number question json converter
-// function numberType(numberQuestion) {
-//   //time
-//   const element = questionContainer(numberQuestion);
-//   element.children[0].children.push({
-//     tag: "input",
-//     attributes: {
-//       type: "number",
-//       name: `${textQuestion.questionId}`,
-//       class: "text-input",
-//       minlength: textQuestion.minLength,
-//       maxLength: textQuestion.maxLength,
-//     },
-//   });
-//   return element;
+// const survey = {
+//   "title": "Multiple choice question",
+//   "description": "check for multiple choice question",
+//   "questions": [
+//     {
+//       "questionId": 1,
+//       "question": "Question 1",
+//       "type": "radio",
+//       "required": false,
+//       "options": {
+//         "0": "option 1",
+//         "1": "option 2",
+//         "2": "option 3"
+//       }
+//     }
+//   ]
 // }
 
 
+userPage(survey);
+
+//user page
+function userPage(survey) {
+  createElement(userJsonConverter(survey), document.body);
+}
 

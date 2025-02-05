@@ -134,6 +134,7 @@ function convert() {
           return ext.value;
       }).reduce((a, ext) => `${a}${ext}, `, "");
       question.accept = imageTypes;
+      question.size = questionContainer.querySelector("div.question-constrains > div.image-size > label > input").value;
     }
 
     // radio, checkbox, dropdown have options, a options obj created and added to the json

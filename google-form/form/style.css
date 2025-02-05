@@ -152,6 +152,12 @@ nav {
   margin: 8px 0;
 }
 
+.form-heading-discription-div {
+  font-size: 0.7rem;
+  margin: 0 0 8px 0;
+
+}
+
 .question-container {
   padding: 24px;
   font-family: Arial, sans-serif;
@@ -230,4 +236,23 @@ textarea.text-input:focus {
 
 .requiredStar {
   color: red;
+}
+
+.number-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: auto;
+  max-width: 400px;
+  font-size: 16px;
+  min-width: 200px;
+  width: auto;
+} 
+
+.image-upload-input {
+  width: auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
