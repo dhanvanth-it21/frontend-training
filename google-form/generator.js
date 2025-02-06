@@ -7,7 +7,7 @@
 export function createHtmlPage(elements) {
   const arr = [];
   elements.forEach((element) => {
-
+    if(!element.tag) return;
     const tag = document.createElement(element.tag);
     if (element.class) {
       element.class.split(" ").forEach((cls) => {
@@ -21,7 +21,7 @@ export function createHtmlPage(elements) {
       const childArr = createHtmlPage(element.children);
       childArr.forEach((childTag) => {
         tag.appendChild(childTag);
-      });
+      }); 
     }
     if (element.attributes) {
       for (const i in element.attributes) {

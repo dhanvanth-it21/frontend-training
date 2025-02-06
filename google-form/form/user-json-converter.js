@@ -11,7 +11,7 @@ export function userJsonConverter(survey) {
             case "radio":
               return markDownOption(question);
             case "checkbox":
-              return markDownOption(question);
+              return markDownCheckbox(question);
             case "select":
               return markDownSelect(question);
             case "date":
@@ -51,6 +51,11 @@ function questionContainer(question) {
             class: "question-title",
             text: `${question.questionId}) ${question.question}`,
             required: `${question.required ? question.required : "false"}`,
+            attributes: {
+              question_type: question.type,
+              min_selection: question.minSelection,
+              max_selection: question.maxSelection,
+            },
             children: [
               (function () {
                 if (question.required)
@@ -117,6 +122,7 @@ function markDownOption(mdo) {
         },
       },
       {
+        tag: "p",
         text: mdo.options[key],
       },
     ],
@@ -128,6 +134,36 @@ function markDownOption(mdo) {
     class: "question-options",
     children: childrenArr,
     name: mdo.questionId,
+  });
+  return element;
+}
+
+// checkbox question json converter
+function markDownCheckbox(checkboxQuestion) {
+  const childrenArr = Object.keys(checkboxQuestion.options).map((key) => ({
+    tag: "label",
+    children: [
+      {
+        tag: "input",
+        attributes: {
+          type: "checkbox",
+          name: checkboxQuestion.questionId,
+          value: checkboxQuestion.options[key],
+        },
+      },
+      {
+        tag: "p",
+        text: checkboxQuestion.options[key],
+      },
+    ],
+  }));
+
+  const element = questionContainer(checkboxQuestion);
+  element.children[0].children.push({
+    tag: "div",
+    class: "question-options",
+    children: childrenArr,
+    name: checkboxQuestion.questionId,
   });
   return element;
 }

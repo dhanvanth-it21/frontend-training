@@ -34,7 +34,9 @@ export function questionContainerFun() {
   sideMenuEventListener(div[0]);
   questionTypeOptionFun(div[0]);
   //adding validation to this question container as a event listner to validate button
-  div[0].querySelector(".validate").addEventListener('click', () => singleQCValidation(div[0]))
+  div[0]
+    .querySelector(".validate")
+    .addEventListener("click", () => singleQCValidation(div[0]));
 }
 
 // deleting the question container which is triggered by delete-question by the side menu
@@ -60,6 +62,13 @@ export function deleteQuestionContainerFun() {
 function questionTypeOptionFun(div) {
   const questionSelection = div.querySelector(".question-selection");
   createElement(questionTypeOptionList, questionSelection);
+  //adding event listener to the question height
+  questionSelection
+    .querySelector("textarea")
+    .addEventListener("input", function () {
+      this.style.height = "auto";
+      this.style.height = `${this.scrollHeight}px`;
+    });
   questionTypeSelectionFun(div);
 }
 
@@ -134,8 +143,6 @@ function selectedQuestionType(qtype, div) {
     createFileImage(div);
   }
 }
-
-
 
 //------------------------------------------------Question Type Generation----------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------

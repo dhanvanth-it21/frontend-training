@@ -155,7 +155,6 @@ nav {
 .form-heading-discription-div {
   font-size: 0.7rem;
   margin: 0 0 8px 0;
-
 }
 
 .question-container {
@@ -247,7 +246,7 @@ textarea.text-input:focus {
   font-size: 16px;
   min-width: 200px;
   width: auto;
-} 
+}
 
 .image-upload-input {
   width: auto;
@@ -255,4 +254,13 @@ textarea.text-input:focus {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+}
+
+.error {
+  width: 100%;
+  border-top: 0.5px solid rgba(255, 0, 0, 1);
+  margin-top: 10px;
+  color: red;
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
 }

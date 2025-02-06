@@ -264,11 +264,10 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 1rem;
   min-height: 50px;
-  max-height: 150px;
   border-radius: 4px;
   font-size: 1rem;
-  height: auto;
   resize: none;
+  overflow: hidden;
 }
 
 .question-type-selection-container {
@@ -277,16 +276,16 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   padding: 0.7rem 1rem;
-  display: none;
+  /* display: none; */
 }
 
 .question-type-selection-container i {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.active-box .question-type-selection-container{
+/* .active-box .question-type-selection-container{
   display: block;
-}
+} */
 
 
 
@@ -358,12 +357,12 @@ nav {
 .question-separator {
   padding: 8px 24px 0px 24px;
   /* background-color: black; */
-  display: none;
+  /* display: none; */
 }
 
-.active-box .question-separator {
+/* .active-box .question-separator {
   display: block;
-}
+} */
 
 .question-selected-type-container {
   display: flex;
@@ -386,25 +385,25 @@ nav {
   flex-direction: column;
   padding: 10px;
   border-radius: 8px;
-  display: none;
+  /* display: none; */
 }
 
-.active-box .question-constrains {
+/* .active-box .question-constrains {
   display: flex;
-}
+} */
 
 .question-container-footer {
   display: flex;
   justify-content: end;
   gap: 1rem;
   align-items: center;
-  display: none
+  /* display: none */
 }
 
-.active-box .question-container-footer {
+/* .active-box .question-container-footer {
   display: flex;
   transition: all 0.3s;
-}
+} */
 
 button.validate {
   color: #fff;
@@ -490,33 +489,33 @@ button.validate:active {
   width: 80%;
 }
 
-.markdown-option-close {
+/* .markdown-option-close {
   display: none;
 }
 
 .active-box .markdown-option-close {
   display: block;
-}
+} */
 
 .markdown-option input:focus {
   width: 80%;
   border-bottom: 3px solid #a94a4a;
 }
 
-.markdown-add-option {
+/* .markdown-add-option {
   transition: all 0.3s;
   display: none;
-}
+} */
 
 .markdown-add-option button {
   color: #1a73e8;
   margin-left: 10px;
 }
 
-.active-box .markdown-add-option {
+/* .active-box .markdown-add-option {
   transition: all 0.3s;
   display: block;
-}
+} */
 
 .paragraph-container > textarea {
   width: 100%;
