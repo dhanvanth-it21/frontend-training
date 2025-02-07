@@ -384,6 +384,7 @@ function required() {
             type: "checkbox",
           },
           {
+            tag: "p",
             text: " Required",
           },
         ],
@@ -406,10 +407,11 @@ function minLength() {
             type: "number",
             attributes: {
               min: 0,
-              value: 0,
+              value: 1,
             },
           },
           {
+            tag: "span",
             text: " Min Character",
           },
         ],
@@ -432,10 +434,11 @@ function maxLength() {
             type: "number",
             attributes: {
               min: 0,
-              value: 100,
+              value: 2000,
             },
           },
           {
+            tag: "span",
             text: " Max Character",
           },
         ],
@@ -462,6 +465,7 @@ function minSelection() {
             },
           },
           {
+            tag: "span",
             text: " Min Selection",
           },
         ],
@@ -488,6 +492,7 @@ function maxSelection() {
             },
           },
           {
+            tag: "span",
             text: " Max Selection",
           },
         ],
@@ -514,6 +519,7 @@ function minValue() {
             },
           },
           {
+            tag: "span",
             text: " Min Value",
           },
         ],
@@ -540,6 +546,7 @@ function maxValue() {
             },
           },
           {
+            tag: "span",
             text: " Max Value",
           },
         ],
@@ -562,6 +569,7 @@ function startDate() {
             type: "date",
           },
           {
+            tag: "span",
             text: " Start Date",
           },
         ],
@@ -584,6 +592,7 @@ function endDate() {
             type: "date",
           },
           {
+            tag: "span",
             text: " End Date",
           },
         ],
@@ -606,6 +615,7 @@ function startTime() {
             type: "time",
           },
           {
+            tag: "span",
             text: " Start Time",
           },
         ],
@@ -628,6 +638,7 @@ function endTime() {
             type: "time",
           },
           {
+            tag: "span",
             text: " End Time",
           },
         ],
@@ -652,6 +663,7 @@ function imageTypeSelectionhelper() {
           },
         },
         {
+          tag: "span",
           text: ` ${ext.toUpperCase()}`,
         },
       ],
@@ -687,6 +699,7 @@ function imageSize() {
             },
           },
           {
+            tag: "span",
             text: " Max Size (MB)",
           },
         ],

@@ -1,10 +1,10 @@
 import {
   sideMenuEventListener,
   sideMenuInit,
-} from "./create-survey/sidemenu.js";
-import { headingInit, navBarInit } from "./create-survey/header.js";
-import { convertToJson } from "./create-survey/form-json.js";
-import { completeValidation, singleQCValidation } from "./create-survey/validator.js";
+} from "./sidemenu.js";
+import { headingInit, navBarInit } from "./header.js";
+import { convertToJson } from "./form-json.js";
+import { completeValidation, singleQCValidation } from "./validator.js";
 
 window.addEventListener("load", () => {
   navBarInit(); //nav bar creation

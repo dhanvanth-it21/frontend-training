@@ -126,6 +126,12 @@ nav {
   transition: all 0.2s;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .form-body-container {
   padding-top: 12px;
   width: 100%;

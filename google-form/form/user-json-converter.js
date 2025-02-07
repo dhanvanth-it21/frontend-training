@@ -6,30 +6,35 @@ export function userJsonConverter(survey) {
       class: "form-body-container",
       children: [
         formHeading(survey.title, survey.description),
-        ...survey.questions.map((question) => {
-          switch (question.type) {
-            case "radio":
-              return markDownOption(question);
-            case "checkbox":
-              return markDownCheckbox(question);
-            case "select":
-              return markDownSelect(question);
-            case "date":
-              return date(question);
-            case "time":
-              return time(question);
-            case "text":
-              return text(question);
-            case "number":
-              return numberType(question);
-            case "file":
-              return imageType(question);
-          }
-        }),
+        {
+          tag: "form",
+          id: "userForm",
+          children: [
+            ...survey.questions.map((question) => {
+              switch (question.type) {
+                case "radio":
+                  return markDownOption(question);
+                case "checkbox":
+                  return markDownCheckbox(question);
+                case "select":
+                  return markDownSelect(question);
+                case "date":
+                  return date(question);
+                case "time":
+                  return time(question);
+                case "text":
+                  return text(question);
+                case "number":
+                  return numberType(question);
+                case "file":
+                  return imageType(question);
+              }
+            }),
+          ],
+        },
       ],
     },
   ];
-  console.log(finalJson);
   return finalJson;
 }
 
@@ -53,8 +58,36 @@ function questionContainer(question) {
             required: `${question.required ? question.required : "false"}`,
             attributes: {
               question_type: question.type,
-              min_selection: question.minSelection,
-              max_selection: question.maxSelection,
+              //this is for the checkbox min and max selection
+              ...(function () {
+                if (question.type === "checkbox") {
+                  return {
+                    min_selection: question.minSelection | null,
+                    max_selection: question.maxSelection | null,
+                  };
+                }
+                return {};
+              })(),
+              //this is for the text min and max length
+              ...(function () {
+                if (question.type === "text") {
+                  return {
+                    min_length: question.minLength | null,
+                    max_length: question.maxLength | null,
+                  };
+                }
+                return {};
+              })(),
+              //this is for the number min and max value
+              ...(function () {
+                if (question.type === "number") {
+                  return {
+                    min_value: question.minValue | null,
+                    max_value: question.maxValue | null,
+                  };
+                }
+                return {};
+              })(),
             },
             children: [
               (function () {
@@ -170,11 +203,21 @@ function markDownCheckbox(checkboxQuestion) {
 
 // dropdown question json converter
 function markDownSelect(selectQuestion) {
-  const options = Object.keys(selectQuestion.options).map((key) => ({
+  const options = [];
+  //no value for the default select
+  options.push({
     tag: "option",
-    value: selectQuestion.options[key],
-    text: selectQuestion.options[key],
-  }));
+    value: "",
+    text: "Select an Option",
+  });
+  //options for the dropdown
+  options.push(
+    ...Object.keys(selectQuestion.options).map((key) => ({
+      tag: "option",
+      value: selectQuestion.options[key],
+      text: selectQuestion.options[key],
+    }))
+  );
 
   const element = questionContainer(selectQuestion);
   element.children[0].children.push({
@@ -231,8 +274,8 @@ function text(textQuestion) {
     attributes: {
       name: `${textQuestion.questionId}`,
       class: "text-input",
-      minlength: textQuestion.minLength,
-      maxlength: textQuestion.maxLength,
+      // minlength: textQuestion.minLength,
+      // maxlength: textQuestion.maxLength,
     },
   });
   return element;
@@ -247,8 +290,8 @@ function numberType(numberQuestion) {
       type: "number",
       name: `${numberQuestion.questionId}`,
       class: "number-input",
-      min: numberQuestion.minValue,
-      max: numberQuestion.maxValue,
+      // min: numberQuestion.minValue,
+      // max: numberQuestion.maxValue,
       placeholder: "Enter the Number",
     },
   });
@@ -269,4 +312,3 @@ function imageType(imageUploadQuestion) {
   });
   return element;
 }
-
